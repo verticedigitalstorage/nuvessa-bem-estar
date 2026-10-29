@@ -18,7 +18,8 @@ Data: 29 de outubro de 2026
 | Proteção dos parâmetros essenciais | PASS | Entrada externa não substitui `pl`, `ck` ou `af` |
 | Garantia de 90 dias | PASS | Condição verificada na página atual do produtor; configuração, hero, selo, seção e FAQ coerentes |
 | Imagens nos cinco kits | PASS | Imagens locais autorizadas, quantidade visível e carregamento tardio |
-| Feedbacks de clientes | PASS | Quatro registros visuais e dois relatos reais sobre recebimento; nome, foto, telefone e etiquetas foram ocultados; aviso esclarece que não representam promessa de resultado |
+| Depoimentos em vídeo | PASS | Dois trechos neutros do acervo `SITES JSON / ESTRUTURA PROPRIA` e um registro de recebimento; reprodução manual, arquivos locais e aviso de transparência |
+| Navegação dos depoimentos | PASS | Abas, botões anterior/próximo e setas do teclado testados; os três seletores ficam visíveis em 390 px |
 | Identificação e contato | PASS | Responsável legal e e-mail comercial exibidos nas páginas públicas e documentos legais |
 | Domínio preparado | PASS | Canonical, configuração, Open Graph, sitemap e robots preparados para `nuvessabemestar.com.br` |
 | Busca por referências antigas e alegações indevidas | PASS | Nenhuma ocorrência encontrada no código publicável |
@@ -31,11 +32,11 @@ Data: 29 de outubro de 2026
 | Auditoria equivalente a Lighthouse | PASS | HTML semântico, árvore acessível, foco, contraste, SEO, dimensões de imagem, preload, recursos locais, segurança e peso dos recursos revisados; CLI Lighthouse não estava disponível no ambiente |
 | Build estático | PASS | Conteúdo gerado em `dist/` e servido localmente |
 
-Auditoria automatizada: **53 PASS / 0 FAIL**.
+Auditoria automatizada: **57 PASS / 0 FAIL**.
 
 ## Limitações documentadas
 
 - A composição e o modo de uso foram omitidos nesta versão até revisão regulatória do rótulo atual.
 - Prazo de entrega absoluto não foi publicado.
 - O domínio está preparado no código, mas ainda precisa ser registrado e conectado; o Meta Pixel permanece vazio até a criação do ID.
-- A publicação remota não foi executada porque não há conta/projeto de hospedagem conectado neste ambiente; o pacote está pronto para GitHub e Cloudflare Pages.
+- Esta atualização foi validada localmente e em `wrangler deploy --dry-run`. O endereço público será atualizado depois que os arquivos forem enviados ao repositório conectado à Cloudflare.

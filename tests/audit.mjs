@@ -24,8 +24,8 @@ check(cfg.SHOW_SPECIAL_OFFERS === false && cfg.SPECIAL_OFFERS.length === 4, "Ofe
 check(cfg.GUARANTEE_DAYS === 90 && index.includes("Garantia de 90 dias"), "Garantia consistente em 90 dias");
 check(cfg.LEGAL_RESPONSIBLE === "NUVESSA BEM ESTAR LTDA" && cfg.COMMERCIAL_EMAIL === "nuvessabemestar@gmail.com", "Responsável e contato comercial configurados");
 check(cfg.BASE_URL === "https://nuvessabemestar.com.br" && read("sitemap.xml").includes(cfg.BASE_URL), "Domínio futuro centralizado no SEO e sitemap");
-check(index.includes('id="experiencias"') && index.includes("O meu pedido chegou, com uma embalagem segura e em perfeito estado.") && index.toLowerCase().includes("não representam promessa de benefício ou resultado de uso."), "Feedbacks reais, anônimos e com aviso de transparência");
-check((index.match(/assets\/images\/social\/cliente-/g) || []).length === 3 && index.includes("kit-source-04.jpeg"), "Galeria de prova social contém quatro registros visuais locais");
+check(index.includes('id="experiencias"') && index.includes("depoimento-recomendacao.mp4") && index.includes("depoimento-agradecimento.mp4") && index.toLowerCase().includes("não apresentar alegações de saúde"), "Depoimentos em vídeo com aviso de transparência");
+check((index.match(/role="tabpanel"/g) || []).length === 3 && mainJs.includes("setupTestimonials") && mainJs.includes("ArrowRight"), "Navegação dos vídeos funciona por botões, setas e teclado");
 check(!index.includes("Ermelinda") && !index.includes("94226-8188") && !index.includes("DESTINATÁRIO"), "Provas sociais publicadas sem dados pessoais visíveis no HTML");
 check(!content.includes("[responsável legal a definir]") && !content.includes("[e-mail comercial a definir]") && !content.includes("seu-dominio-aqui"), "Nenhum placeholder público restante");
 check(cfg.OFFERS.every(o => o.image && fs.existsSync(path.join(root, o.image))), "Todos os kits possuem imagem local configurada");

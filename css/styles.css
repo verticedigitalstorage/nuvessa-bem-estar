@@ -36,6 +36,20 @@
 .feedback-card cite{color:var(--muted);font-size:.78rem;font-style:normal}
 .quote-mark{display:block;height:1.7rem;color:var(--gold);font:700 3.5rem/1 Georgia,serif}
 .feedback-disclaimer{margin:1rem 0 0;padding:1rem 1.2rem;border-left:3px solid var(--gold);background:#fffaf0;color:var(--muted);font-size:.78rem}
+.testimonial-picker{display:flex;gap:.65rem;overflow-x:auto;padding:.25rem .15rem 1rem;scrollbar-width:thin;scroll-snap-type:x proximity}
+.testimonial-tab{flex:0 0 auto;min-height:46px;padding:.65rem 1rem;border:1px solid var(--line);border-radius:999px;background:#fff;color:var(--green-800);font-weight:800;cursor:pointer;scroll-snap-align:start}
+.testimonial-tab.is-active{background:var(--green-800);border-color:var(--green-800);color:#fff}
+.testimonial-tab:focus-visible,.testimonial-arrow:focus-visible{outline:3px solid var(--gold);outline-offset:3px}
+.testimonial-stage{min-height:440px}
+.testimonial-card{display:grid;grid-template-columns:minmax(0,1.35fr) minmax(260px,.65fr);align-items:center;gap:2rem;margin:0;padding:1.5rem;border:1px solid var(--line);border-radius:26px;background:#fff;box-shadow:var(--shadow)}
+.testimonial-card[hidden]{display:none}
+.testimonial-card video{display:block;width:100%;height:410px;object-fit:contain;border-radius:18px;background:#08150f}
+.testimonial-card h3{font-size:clamp(1.5rem,3vw,2.2rem);line-height:1.15;margin:.35rem 0 .7rem}
+.testimonial-card figcaption>p:last-child{color:var(--muted)}
+.testimonial-controls{display:flex;align-items:center;justify-content:center;gap:1rem;margin-top:1rem}
+.testimonial-controls span{min-width:6.5rem;text-align:center;color:var(--muted);font-size:.9rem;font-weight:700}
+.testimonial-arrow{display:grid;place-items:center;width:46px;height:46px;border:1px solid var(--line);border-radius:50%;background:#fff;color:var(--green-800);font-size:1.35rem;font-weight:900;cursor:pointer}
+.testimonial-arrow:hover{background:var(--green-50)}
 /* Exibir os arquivos completos, com legendas e quantidades fora da fotografia. */
 .proof-video{display:grid;grid-template-columns:minmax(0,300px) minmax(0,1fr);align-items:center;gap:2rem;margin:1.5rem 0;padding:1.5rem;border:1px solid var(--line);border-radius:24px;background:#fff}
 .proof-video video{display:block;width:100%;height:auto;max-height:440px;object-fit:contain;background:#0a1711;border-radius:16px}
@@ -46,6 +60,7 @@
 .product-video-section h2{font-size:clamp(1.8rem,3vw,2.6rem);line-height:1.12;letter-spacing:-.035em;margin:.5rem 0 1rem}
 .product-video-section .button{margin-top:.75rem}
 @media(max-width:600px){.proof-video{grid-template-columns:minmax(0,1fr);gap:1rem;padding:1rem}.proof-video video{max-height:460px}}
+@media(max-width:700px){.testimonial-stage{min-height:0}.testimonial-card{grid-template-columns:1fr;gap:1rem;padding:1rem}.testimonial-card video{height:auto;max-height:480px}.testimonial-card figcaption{padding:.2rem .3rem}.testimonial-picker{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));overflow:visible;padding:.25rem 0 1rem}.testimonial-tab{width:100%;padding-inline:.6rem}.testimonial-tab:last-child{grid-column:1/-1}.testimonial-controls{justify-content:space-between}}
 .hero-visual{min-width:0;min-height:0;gap:1rem}
 .hero-visual img{display:block;width:100%;max-width:520px;aspect-ratio:1;object-fit:contain}
 .hero-visual figcaption{margin:0;text-align:center}

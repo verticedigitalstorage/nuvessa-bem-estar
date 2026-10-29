@@ -71,6 +71,8 @@ Apresentação `assets/videos/apresentacao-embalagem.mp4` e capa `.jpg`: origem 
 
 Vídeo `assets/videos/recebimento-caixa.mp4`: trecho de 0 a 2,5 segundos de `WhatsApp Video 2026-02-23 at 14.29.56.mp4`, arquivo Drive `1v9_aNFWMUWhrzjb3U3Anq7atzREDYuh4`, pasta DEPOIMENTOS. Recorte superior para excluir papéis de fundo, áudio removido e trecho com etiqueta excluído. `recebimento-caixa.jpg` é um quadro do mesmo vídeo. Reprodução manual, sem carregamento antecipado. O segundo vídeo (`depoimento nervo.mp4`) foi excluído por mostrar apenas etiqueta com dados pessoais.
 
+Depoimentos `assets/videos/depoimento-recomendacao.mp4` e `depoimento-agradecimento.mp4`: trechos neutros dos arquivos `DEPOIMENTO 2.mp4` (Drive `1dNNTi01iXP6RNLKue9YX8r5B5KgkSVYG`) e `depoimento 4.mp4` (Drive `1yAmYmVzdAV0uU7AK2xg-RD0YuDBXut6i`), localizados em `SITES JSON / ESTRUTURA PROPRIA > Angulo Nervos/dores > Depoimentos video`. Foram mantidas apenas uma recomendação geral e uma mensagem de agradecimento. Partes com alegações terapêuticas, promessa de resultado ou abandono de medicamentos não foram publicadas. Vídeos convertidos para H.264, com reprodução manual e capas locais.
+
 Identificação empresarial alterada para `NUVESSA BEM ESTAR LTDA` conforme informado pelo proprietário; cadastro empresarial não verificado e nenhum CNPJ adicionado.
 
 | Arquivo local | Uso | Origem |
@@ -79,11 +81,7 @@ Identificação empresarial alterada para `NUVESSA BEM ESTAR LTDA` conforme info
 | `assets/images/kit-source-02.jpeg` | Foto autorizada na vitrine do kit de 8 caixas | Pasta pública “💊 FRASCOS PNG” no mesmo Drive principal |
 | `assets/images/kit-source-03.jpeg` | Foto autorizada na vitrine do kit de 12 caixas | Pasta pública “💊 FRASCOS PNG” no mesmo Drive principal |
 | `assets/images/kit-source-04.jpeg` | Foto autorizada na vitrine do kit de 1 caixa | Pasta pública “💊 FRASCOS PNG” no mesmo Drive principal |
-| `assets/images/social/cliente-recebimento-01.jpg` | Foto de produto recebido por cliente | Pasta pública “💚 DEPOIMENTOS” no Drive principal; arquivo `102bb9f0-...jpg` |
-| `assets/images/social/cliente-relato-01.jpg` | Captura de relato e foto de recebimento | Pasta pública “💚 DEPOIMENTOS”; captura de 18/02/2026, anonimizada para ocultar nome e foto |
-| `assets/images/social/cliente-relato-02.jpg` | Captura de relato e caixa aberta | Pasta pública “💚 DEPOIMENTOS”; captura de 08/05/2026, anonimizada para ocultar telefone, destinatário e etiquetas |
 | `assets/icons/favicon.svg` | Símbolo abstrato neutro | Criado para este projeto; não representa certificação médica |
-| Trechos textuais anônimos da seção “Experiências” | Relatos de recebimento, sem alegações de resultado | Pasta pública “💚 DEPOIMENTOS” no Drive principal; capturas de 18/02/2026 e 08/05/2026 |
 
 Nenhuma imagem é carregada por hotlink. Os arquivos brutos que continham dados pessoais não fazem parte do pacote publicável.
 
@@ -95,7 +93,7 @@ Nenhuma imagem é carregada por hotlink. Os arquivos brutos que continham dados 
 - revisar juridicamente o rótulo atual antes de eventual inclusão de composição, quantidades, advertências e modo de uso;
 - fazer revisão jurídica final dos textos legais e das condições do produtor/Braip.
 
-Composição, doses e posologia foram deliberadamente omitidas nesta versão até uma revisão regulatória do rótulo atual. A garantia de 90 dias foi conferida na página atual do produtor; a página não reproduz alegações terapêuticas, selos de autoridade, endossos, estudos, depoimentos ou prazos absolutos encontrados em materiais promocionais.
+Composição, doses e posologia foram deliberadamente omitidas nesta versão até uma revisão regulatória do rótulo atual. A garantia de 90 dias foi conferida na página atual do produtor; a página não reproduz alegações terapêuticas, selos de autoridade, endossos, estudos ou prazos absolutos encontrados em materiais promocionais. Os depoimentos publicados foram limitados a trechos neutros.
 
 ## Estrutura
 

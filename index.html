@@ -83,47 +83,43 @@
     <section class="section proof-section" id="experiencias" aria-labelledby="experiencias-titulo">
       <div class="proof-intro">
         <p class="eyebrow">Experiências compartilhadas</p>
-        <h2 id="experiencias-titulo">Pedidos que chegaram às mãos dos clientes</h2>
-        <p>Selecionamos registros reais de recebimento disponibilizados pelo produtor. Dados pessoais, telefones e etiquetas foram ocultados para preservar a privacidade.</p>
+        <h2 id="experiencias-titulo">Relatos reais e registros de recebimento</h2>
+        <p>Assista aos trechos selecionados de vídeos disponibilizados pelo produtor. Use os botões para alternar entre os relatos e o registro da entrega.</p>
       </div>
-      <div class="proof-gallery" aria-label="Registros de recebimento de clientes">
-        <figure class="proof-photo proof-photo--featured">
-          <img src="assets/images/social/cliente-recebimento-01.jpg" width="720" height="1280" loading="lazy" decoding="async" alt="Caixa do NervoCure Max fotografada após o recebimento por uma cliente">
-          <figcaption>Produto recebido por cliente</figcaption>
+      <div class="testimonial-picker" role="tablist" aria-label="Escolher vídeo">
+        <button class="testimonial-tab is-active" type="button" role="tab" aria-selected="true" aria-controls="relato-recomendacao" id="tab-recomendacao" data-testimonial="relato-recomendacao">Recomendação</button>
+        <button class="testimonial-tab" type="button" role="tab" aria-selected="false" aria-controls="relato-agradecimento" id="tab-agradecimento" data-testimonial="relato-agradecimento" tabindex="-1">Agradecimento</button>
+        <button class="testimonial-tab" type="button" role="tab" aria-selected="false" aria-controls="relato-recebimento" id="tab-recebimento" data-testimonial="relato-recebimento" tabindex="-1">Recebimento</button>
+      </div>
+      <div class="testimonial-stage" aria-live="polite">
+        <figure class="testimonial-card" id="relato-recomendacao" role="tabpanel" aria-labelledby="tab-recomendacao">
+          <video controls playsinline preload="metadata" width="720" height="405" poster="assets/videos/depoimento-recomendacao.jpg" aria-label="Trecho de cliente recomendando o produto">
+            <source src="assets/videos/depoimento-recomendacao.mp4" type="video/mp4">
+            Seu navegador não suporta este vídeo. <a href="assets/videos/depoimento-recomendacao.mp4">Abrir o relato</a>.
+          </video>
+          <figcaption><span class="eyebrow">Relato em vídeo</span><h3>Recomendação compartilhada por cliente</h3><p>Trecho neutro do depoimento original disponibilizado pelo produtor.</p></figcaption>
         </figure>
-        <figure class="proof-photo">
-          <img src="assets/images/social/cliente-relato-01.jpg" width="1000" height="717" loading="lazy" decoding="async" alt="Conversa anonimizada com foto do NervoCure Max recebido e mensagem confirmando a entrega">
-          <figcaption>Relato e foto enviados após a entrega</figcaption>
+        <figure class="testimonial-card" id="relato-agradecimento" role="tabpanel" aria-labelledby="tab-agradecimento" hidden>
+          <video controls playsinline preload="none" width="720" height="405" poster="assets/videos/depoimento-agradecimento.jpg" aria-label="Trecho de agradecimento de cliente">
+            <source src="assets/videos/depoimento-agradecimento.mp4" type="video/mp4">
+            Seu navegador não suporta este vídeo. <a href="assets/videos/depoimento-agradecimento.mp4">Abrir o relato</a>.
+          </video>
+          <figcaption><span class="eyebrow">Relato em vídeo</span><h3>Agradecimento enviado à equipe</h3><p>Trecho neutro do depoimento original disponibilizado pelo produtor.</p></figcaption>
         </figure>
-        <figure class="proof-photo">
-          <img src="assets/images/social/cliente-relato-02.jpg" width="1000" height="728" loading="lazy" decoding="async" alt="Conversa anonimizada com caixa aberta de NervoCure Max recebida por cliente">
-          <figcaption>Registro de caixa aberta enviado por cliente</figcaption>
-        </figure>
-        <figure class="proof-photo">
-          <img src="assets/images/kit-source-04.jpeg" width="720" height="1280" loading="lazy" decoding="async" alt="Embalagem aberta contendo uma caixa do NervoCure Max">
-          <figcaption>Detalhe da embalagem recebida</figcaption>
+        <figure class="testimonial-card" id="relato-recebimento" role="tabpanel" aria-labelledby="tab-recebimento" hidden>
+          <video controls playsinline preload="none" width="464" height="680" poster="assets/videos/recebimento-caixa.jpg" aria-label="Registro em vídeo de uma caixa aberta com cinco embalagens de NervoCure Max">
+            <source src="assets/videos/recebimento-caixa.mp4" type="video/mp4">
+            Seu navegador não suporta este vídeo. <a href="assets/videos/recebimento-caixa.mp4">Abrir vídeo de recebimento</a>.
+          </video>
+          <figcaption><span class="eyebrow">Recebimento em vídeo</span><h3>Um registro da caixa aberta</h3><p>Vídeo mostrando cinco embalagens dentro da caixa de entrega. Partes com dados de envio foram removidas.</p></figcaption>
         </figure>
       </div>
-      <figure class="proof-video">
-        <video controls playsinline preload="none" width="464" height="680" poster="assets/videos/recebimento-caixa.jpg" aria-label="Registro em vídeo de uma caixa aberta com cinco embalagens de NervoCure Max" aria-describedby="video-recebimento-descricao">
-          <source src="assets/videos/recebimento-caixa.mp4" type="video/mp4">
-          Seu navegador não suporta este vídeo. <a href="assets/videos/recebimento-caixa.mp4">Abrir vídeo de recebimento</a>.
-        </video>
-        <figcaption id="video-recebimento-descricao"><span class="eyebrow">Recebimento em vídeo</span><h3>Um registro da caixa aberta</h3><p>Vídeo disponibilizado pelo produtor mostrando cinco embalagens de NervoCure Max dentro da caixa de entrega.</p><p class="microcopy">Trecho de 2,5 segundos, sem áudio. As partes com dados de envio foram removidas. Registro de recebimento, sem avaliação dos resultados de uso.</p></figcaption>
-      </figure>
-      <div class="feedback-list">
-        <blockquote class="feedback-card">
-          <span class="quote-mark" aria-hidden="true">“</span>
-          <p>O meu pedido chegou, com uma embalagem segura e em perfeito estado.</p>
-          <cite>Cliente — relato de recebimento enviado ao produtor</cite>
-        </blockquote>
-        <blockquote class="feedback-card">
-          <span class="quote-mark" aria-hidden="true">“</span>
-          <p>Acabou de chegar, obrigado.</p>
-          <cite>Cliente — relato de recebimento enviado ao produtor</cite>
-        </blockquote>
+      <div class="testimonial-controls" aria-label="Navegação dos vídeos">
+        <button class="testimonial-arrow" type="button" id="testimonial-prev" aria-label="Vídeo anterior">←</button>
+        <span id="testimonial-status" aria-live="polite">Vídeo 1 de 3</span>
+        <button class="testimonial-arrow" type="button" id="testimonial-next" aria-label="Próximo vídeo">→</button>
       </div>
-      <p class="feedback-disclaimer"><strong>Transparência:</strong> registros disponibilizados pelo produtor e anonimizados para esta página. Eles descrevem somente a experiência de recebimento dos pedidos e não representam promessa de benefício ou resultado de uso.</p>
+      <p class="feedback-disclaimer"><strong>Transparência:</strong> materiais disponibilizados pelo produtor. Os depoimentos foram reduzidos a trechos neutros para não apresentar alegações de saúde ou promessas de resultado. Experiências individuais não garantem resultados, que podem variar de pessoa para pessoa.</p>
     </section>
 
     <section class="section offers-section" id="ofertas">
