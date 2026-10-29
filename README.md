@@ -9,11 +9,11 @@ Loja estática, mobile-first e sem dependências para apresentar o catálogo da 
 1. Extraia `nervocuremax-github-completo.zip` em uma pasta.
 2. Crie o repositório `nervocuremax-landing-afiliado` no GitHub e envie o conteúdo extraído. `index.html`, `build.mjs`, `assets`, `css` e `js` devem ficar na raiz do repositório. Não envie apenas o ZIP.
 3. No Cloudflare Pages, crie um projeto conectado a esse repositório e selecione a branch `main`.
-4. Framework: `None`. Comando de build: `node build.mjs`. Diretório de saída: `dist`. Diretório raiz: deixe vazio (raiz do repositório).
+4. Framework: `None`. Comando de build: `npm run build`. Comando de deploy: `npx wrangler deploy`. Diretório raiz: deixe vazio (raiz do repositório). O arquivo `wrangler.jsonc` limita a publicação à pasta `dist/`.
 5. Publique e abra a URL `pages.dev` informada pelo Cloudflare. Atualizações enviadas à branch conectada geram novas publicações.
 6. Para usar `nuvessabemestar.com.br`, registre o domínio e adicione-o como domínio personalizado no projeto Pages, seguindo as instruções de DNS.
 
-O build usa Node.js e funciona no ambiente Linux do Cloudflare, sem instalar dependências. `build.ps1` é uma alternativa apenas para uso local no Windows.
+O build usa Node.js e funciona no ambiente Linux do Cloudflare. O Wrangler é instalado pelas dependências do projeto. `build.ps1` é uma alternativa apenas para uso local no Windows.
 
 ### Cloudflare Pages por upload direto
 
@@ -31,7 +31,7 @@ npm run cf:login
 npm run deploy
 ```
 
-O login abre a autorização da sua conta Cloudflare. Na primeira publicação, selecione a conta e o projeto Pages existente ou crie um projeto quando solicitado. Para escolher explicitamente um projeto existente: `npm run deploy -- --project-name NOME-DO-PROJETO`.
+O login abre a autorização da sua conta Cloudflare. O arquivo `wrangler.jsonc` define o projeto `nuvessa-bem-estar` e publica somente `dist/`, evitando o envio de `node_modules` e dos arquivos-fonte como assets públicos.
 
 O Wrangler é uma dependência local de desenvolvimento; não é carregado pelos visitantes. Envie `package.json` e `package-lock.json` ao GitHub; nunca envie `node_modules`, `.wrangler` ou credenciais. O upload pelo painel e a integração do Pages com GitHub continuam disponíveis sem login local.
 
