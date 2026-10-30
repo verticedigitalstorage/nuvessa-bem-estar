@@ -45,7 +45,7 @@
       ${offer.gift ? `<p class="offer-gift">${offer.gift}</p>` : ""}
       ${offer.installmentPrice ? `
         <div class="offer-pricing">
-          <p class="offer-original">de <s>${offer.originalPrice}</s> por</p>
+          <p class="offer-original">De <strong>${offer.originalPrice}</strong> por</p>
           <p class="offer-installment"><span>${offer.installments}x de</span><strong>${offer.installmentPrice}</strong></p>
           <p class="offer-cash">ou <strong>${offer.price}</strong> à vista</p>
         </div>` : `<p class="offer-price">${offer.price}</p>`}
