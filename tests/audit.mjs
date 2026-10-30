@@ -30,6 +30,8 @@ check(index.indexOf('id="experiencias"') < index.indexOf('id="ofertas"') && inde
 check(cfg.BASE_URL === "https://nuvessabemestar.com.br" && read("sitemap.xml").includes(cfg.BASE_URL), "Domínio futuro centralizado no SEO e sitemap");
 check(index.includes('id="experiencias"') && index.includes("depoimento-completo-1.mp4") && index.includes("depoimento-completo-4.mp4") && index.toLowerCase().includes("prévia local") && index.toLowerCase().includes("alegações de saúde"), "Depoimentos integrais identificados como material de revisão interna");
 check((index.match(/class="story-card/g) || []).length === 4 && index.includes('class="stories-grid"') && [1, 2, 3, 4].every(number => index.includes(`depoimento-completo-${number}.mp4`)) && !index.includes("recebimento-caixa"), "Quatro depoimentos integrais e únicos ficam visíveis na prévia interna, sem o vídeo da caixa");
+check([1, 2, 3, 4].every(number => index.includes(`https://pub-b31aff6972c544e58790c398b98875c5.r2.dev/depoimento-completo-${number}.mp4`)), "Quatro depoimentos integrais apontam para o bucket público R2");
+check(read("_headers").includes("media-src 'self' https://pub-b31aff6972c544e58790c398b98875c5.r2.dev"), "Política de segurança permite mídia do bucket R2 configurado");
 check(index.includes('class="mobile-offer-bar"') && index.includes('class="header-cta"'), "Acesso aos kits permanece visível no cabeçalho e no celular");
 check(!index.includes("Ermelinda") && !index.includes("94226-8188") && !index.includes("DESTINATÁRIO"), "Provas sociais publicadas sem dados pessoais visíveis no HTML");
 check(!content.includes("[responsável legal a definir]") && !content.includes("[e-mail comercial a definir]") && !content.includes("seu-dominio-aqui"), "Nenhum placeholder público restante");
