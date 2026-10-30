@@ -43,7 +43,12 @@
       <p class="offer-eyebrow">${special ? "Oferta especial" : offer.label}</p>
       <h3>${offer.boxes} ${offer.boxes === 1 ? "caixa" : "caixas"}</h3>
       ${offer.gift ? `<p class="offer-gift">${offer.gift}</p>` : ""}
-      <p class="offer-price">${offer.price}</p>
+      ${offer.installmentPrice ? `
+        <div class="offer-pricing">
+          <p class="offer-original">de <s>${offer.originalPrice}</s> por</p>
+          <p class="offer-installment"><span>${offer.installments}x de</span><strong>${offer.installmentPrice}</strong></p>
+          <p class="offer-cash">ou <strong>${offer.price}</strong> à vista</p>
+        </div>` : `<p class="offer-price">${offer.price}</p>`}
       <a class="button button--buy" href="${trackedCheckout(offer.url)}" data-offer="${offer.id}" rel="sponsored noopener">Escolher ${offer.boxes} ${offer.boxes === 1 ? "caixa" : "caixas"}</a>
       <p class="offer-note">A compra é concluída em ambiente de pagamento seguro.</p>`;
     return article;

@@ -1,6 +1,8 @@
-# Nuvessa Bem & Estar
+# Nuvessa Saúde & Bem-Estar
 
-Loja estática, mobile-first e sem dependências para apresentar o catálogo da Nuvessa Bem & Estar. A primeira vitrine apresenta o NervoCure Max e conclui a compra em ambiente externo seguro.
+Loja estática, mobile-first e sem dependências para apresentar o catálogo da Nuvessa Saúde & Bem-Estar. A primeira vitrine apresenta o NervoCure Max e conclui a compra em ambiente externo seguro.
+
+> **VERSÃO LOCAL PARA REVISÃO — NÃO PUBLICAR.** Esta cópia contém quatro depoimentos integrais com alegações pessoais de saúde ainda não verificadas para publicidade. Antes de qualquer publicação ou campanha, substitua-os pelas versões revisadas e execute novamente os testes regulatórios.
 
 ## Direção visual atual
 
@@ -47,7 +49,7 @@ Como o site não depende de servidor, o conteúdo de `dist/` também pode ser pu
 
 Edite apenas `js/config.js` para alterar:
 
-- `BUSINESS_NAME`: nome da loja (`Nuvessa Bem & Estar`);
+- `BUSINESS_NAME`: nome da loja (`Nuvessa Saúde & Bem-Estar`);
 - `LEGAL_RESPONSIBLE`: NUVESSA BEM ESTAR LTDA;
 - `COMMERCIAL_EMAIL`: `nuvessabemestar@gmail.com`;
 - `BASE_URL`: preparado para `https://nuvessabemestar.com.br`;
@@ -69,26 +71,36 @@ powershell -ExecutionPolicy Bypass -File .\build.ps1
 
 O teste automatizado verifica ofertas, destaque, garantia, links Braip, afiliado, propagação de UTMs, alegações indevidas, recursos internos, consentimento e cabeçalhos de segurança.
 
+## Condições promocionais registradas
+
+Valores conferidos na página de referência do produtor em 30/10/2026. O checkout vinculado a cada kit é a referência comercial final e pode apresentar condições diferentes no futuro.
+
+| Kit | Preço anterior | Parcelamento publicado | À vista |
+|---|---:|---:|---:|
+| 1 caixa | R$ 329,57 | 12x de R$ 18,31 | R$ 177,00 |
+| 3 caixas + massageador | R$ 983,50 | 12x de R$ 27,61 | R$ 267,00 |
+| 5 caixas + massageador | R$ 983,50 | 12x de R$ 41,06 | R$ 397,00 |
+| 8 caixas + massageador | R$ 1.431,90 | 12x de R$ 61,74 | R$ 597,00 |
+| 12 caixas + massageador | R$ 1.997,00 | 12x de R$ 82,43 | R$ 797,00 |
+
 ## Materiais utilizados
 
 Apresentação `assets/videos/apresentacao-embalagem.mp4` e capa `.jpg`: origem `Remarketing Nervocuremax.mp4`, Drive `1OuFJz6ty_FC70986dSJJ2tQ3OzgNfzb1`. Recorte da metade direita abaixo das faixas promocionais (510 × 640), excluindo etiquetas de envio da metade esquerda. Áudio removido; vídeo H.264 a 30 fps, sem autoplay e com preload desativado. Capa extraída aos 13 segundos. Exibido após a apresentação textual e antes dos feedbacks.
 
-Depoimentos `assets/videos/depoimento-recomendacao.mp4` e `depoimento-agradecimento.mp4`: trechos neutros dos arquivos `DEPOIMENTO 2.mp4` (Drive `1dNNTi01iXP6RNLKue9YX8r5B5KgkSVYG`) e `depoimento 4.mp4` (Drive `1yAmYmVzdAV0uU7AK2xg-RD0YuDBXut6i`), localizados em `SITES JSON / ESTRUTURA PROPRIA > Angulo Nervos/dores > Depoimentos video`. Foram mantidas apenas uma recomendação geral e uma mensagem de agradecimento. Partes com alegações terapêuticas, promessa de resultado ou abandono de medicamentos não foram publicadas. Vídeos convertidos para H.264, com reprodução manual e capas locais.
-
-Os arquivos `Depoimento 1.mp4` (Drive `10ncPD-VXHUGXw4p-dUhvXNtppfoONY17`) e `depoimento 3.mp4` (Drive `1L6oNnNWovg2KvnRjmeEwLb8euIWXLh21`) não foram publicados porque não oferecem um trecho útil que permaneça neutro sem alterar o contexto do relato. O antigo registro da caixa também foi removido da seção a pedido do proprietário.
+Depoimentos integrais `assets/videos/depoimento-completo-1.mp4` a `depoimento-completo-4.mp4`: arquivos originais do último Drive, IDs `10ncPD-VXHUGXw4p-dUhvXNtppfoONY17`, `1dNNTi01iXP6RNLKue9YX8r5B5KgkSVYG`, `1L6oNnNWovg2KvnRjmeEwLb8euIWXLh21` e `1yAmYmVzdAV0uU7AK2xg-RD0YuDBXut6i`. Foram incluídos sem cortes exclusivamente para avaliação local. O antigo registro da caixa continua removido e nenhum vídeo foi duplicado.
 
 Identificação empresarial alterada para `NUVESSA BEM ESTAR LTDA` conforme informado pelo proprietário; cadastro empresarial não verificado e nenhum CNPJ adicionado.
 
 | Arquivo local | Uso | Origem |
 |---|---|---|
 | `assets/images/frasco-oficial-02.webp` | Hero e vitrine do kit de 1 caixa | Pasta pública “💊 FRASCOS PNG” no Drive principal fornecido pelo afiliado: `1gtRBG5jJjgROlyhknQoVGPDKDO4LZ3GR` |
-| `assets/images/kit-3-caixas-massageador.png` | Vitrine com 3 embalagens e massageador | Composição criada para o projeto com a ferramenta integrada de imagens, usando a embalagem oficial e a página do produtor apenas como referências visuais |
-| `assets/images/kit-5-caixas-massageador.png` | Vitrine com 5 embalagens e massageador | Composição criada para o projeto com a ferramenta integrada de imagens, usando a embalagem oficial e a página do produtor apenas como referências visuais |
-| `assets/images/kit-8-caixas-massageador.png` | Vitrine com 8 embalagens e massageador | Composição criada para o projeto com a ferramenta integrada de imagens, usando a embalagem oficial e a página do produtor apenas como referências visuais |
-| `assets/images/kit-12-caixas-massageador.png` | Vitrine com 12 embalagens e massageador | Composição criada para o projeto com a ferramenta integrada de imagens, usando a embalagem oficial e a página do produtor apenas como referências visuais |
+| `assets/images/kit-3-caixas-massageador.png` | Vitrine com 3 embalagens e massageador | Composição criada para o projeto com a ferramenta integrada de imagens, usando a embalagem oficial e a página do produtor como referências visuais |
+| `assets/images/kit-5-caixas-massageador.png` | Vitrine com 5 embalagens e massageador | Composição criada para o projeto com a ferramenta integrada de imagens, usando a embalagem oficial e a página do produtor como referências visuais |
+| `assets/images/kit-8-caixas-massageador.png` | Vitrine com 8 embalagens e massageador | Composição criada para o projeto com a ferramenta integrada de imagens, usando a embalagem oficial e a página do produtor como referências visuais |
+| `assets/images/kit-12-caixas-massageador.png` | Vitrine com 12 embalagens e massageador | Composição criada para o projeto com a ferramenta integrada de imagens, usando a embalagem oficial e a página do produtor como referências visuais |
 | `assets/icons/favicon.svg` | Símbolo abstrato neutro | Criado para este projeto; não representa certificação médica |
 
-Nenhuma imagem é carregada por hotlink. Os arquivos brutos que continham dados pessoais não fazem parte do pacote publicável.
+Nenhuma imagem é carregada por hotlink. Este projeto de backup inclui os quatro vídeos integrais por solicitação do proprietário e deve permanecer como cópia local de arquivo; consulte o aviso no topo da página antes de qualquer uso público.
 
 ## Pendências antes da publicação definitiva
 
@@ -98,7 +110,7 @@ Nenhuma imagem é carregada por hotlink. Os arquivos brutos que continham dados 
 - revisar juridicamente o rótulo atual antes de eventual inclusão de composição, quantidades, advertências e modo de uso;
 - fazer revisão jurídica final dos textos legais e das condições do produtor/Braip.
 
-Composição, doses e posologia foram deliberadamente omitidas nesta versão até uma revisão regulatória do rótulo atual. A garantia de 90 dias foi conferida na página atual do produtor; a página não reproduz alegações terapêuticas, selos de autoridade, endossos, estudos ou prazos absolutos encontrados em materiais promocionais. Os depoimentos publicados foram limitados a trechos neutros.
+Composição, doses e posologia foram deliberadamente omitidas nesta versão até uma revisão regulatória do rótulo atual. A garantia de 90 dias foi conferida na página atual do produtor. O texto da página não reproduz alegações terapêuticas, selos de autoridade, endossos, estudos ou prazos absolutos encontrados em materiais promocionais; os quatro vídeos integrais, entretanto, contêm falas pessoais que exigem revisão antes de qualquer publicação.
 
 ## Estrutura
 
