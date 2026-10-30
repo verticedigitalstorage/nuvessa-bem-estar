@@ -117,7 +117,7 @@ h1, h2, h3, p { text-wrap: pretty; }
 .offer-price { margin: .9rem 0 1.2rem; font-size: 1.8rem; font-weight: 900; }
 .offer-pricing { margin: .75rem 0 1.15rem; padding: .85rem 0; border-top: 1px solid var(--line); border-bottom: 1px solid var(--line); text-align: center; }
 .offer-original { margin: 0 0 .18rem; color: #496158; font-size: .94rem; font-weight: 600; }
-.offer-original strong { color: var(--green-900); font-weight: 850; letter-spacing: .01em; }
+.offer-original s { color: var(--green-900); font-weight: 850; letter-spacing: .01em; text-decoration-color: #d36a3a; text-decoration-thickness: 1px; }
 .offer-installment { margin: .12rem 0; display: flex; align-items: baseline; justify-content: center; gap: .45rem; color: var(--green-950); }
 .offer-installment span { font-size: .88rem; font-weight: 800; }
 .offer-installment strong { font-size: 2rem; line-height: 1; letter-spacing: -.04em; }
