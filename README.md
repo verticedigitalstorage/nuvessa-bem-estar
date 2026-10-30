@@ -1,6 +1,10 @@
-# Nuvessa Bem-Estar
+# Nuvessa Bem & Estar
 
-Loja estática, mobile-first e sem dependências para apresentar o catálogo da Nuvessa Bem-Estar. A primeira vitrine apresenta o NervoCure Max e conclui a compra em ambiente externo seguro.
+Loja estática, mobile-first e sem dependências para apresentar o catálogo da Nuvessa Bem & Estar. A primeira vitrine apresenta o NervoCure Max e conclui a compra em ambiente externo seguro.
+
+## Direção visual atual
+
+A página usa como referência de ritmo comercial a página pública do produto: hero amplo, embalagem em primeiro plano, acentos laranja, prova social antes das ofertas e kits com comparação clara. O design, a redação e a identidade da Nuvessa são originais. Alegações terapêuticas, urgência artificial, estatísticas não comprovadas e selos de aprovação da referência não foram reproduzidos.
 
 ## Publicação rápida
 
@@ -43,7 +47,7 @@ Como o site não depende de servidor, o conteúdo de `dist/` também pode ser pu
 
 Edite apenas `js/config.js` para alterar:
 
-- `BUSINESS_NAME`: nome da loja (`Nuvessa Bem-Estar`);
+- `BUSINESS_NAME`: nome da loja (`Nuvessa Bem & Estar`);
 - `LEGAL_RESPONSIBLE`: NUVESSA BEM ESTAR LTDA;
 - `COMMERCIAL_EMAIL`: `nuvessabemestar@gmail.com`;
 - `BASE_URL`: preparado para `https://nuvessabemestar.com.br`;
@@ -69,18 +73,19 @@ O teste automatizado verifica ofertas, destaque, garantia, links Braip, afiliado
 
 Apresentação `assets/videos/apresentacao-embalagem.mp4` e capa `.jpg`: origem `Remarketing Nervocuremax.mp4`, Drive `1OuFJz6ty_FC70986dSJJ2tQ3OzgNfzb1`. Recorte da metade direita abaixo das faixas promocionais (510 × 640), excluindo etiquetas de envio da metade esquerda. Áudio removido; vídeo H.264 a 30 fps, sem autoplay e com preload desativado. Capa extraída aos 13 segundos. Exibido após a apresentação textual e antes dos feedbacks.
 
-Vídeo `assets/videos/recebimento-caixa.mp4`: trecho de 0 a 2,5 segundos de `WhatsApp Video 2026-02-23 at 14.29.56.mp4`, arquivo Drive `1v9_aNFWMUWhrzjb3U3Anq7atzREDYuh4`, pasta DEPOIMENTOS. Recorte superior para excluir papéis de fundo, áudio removido e trecho com etiqueta excluído. `recebimento-caixa.jpg` é um quadro do mesmo vídeo. Reprodução manual, sem carregamento antecipado. O segundo vídeo (`depoimento nervo.mp4`) foi excluído por mostrar apenas etiqueta com dados pessoais.
-
 Depoimentos `assets/videos/depoimento-recomendacao.mp4` e `depoimento-agradecimento.mp4`: trechos neutros dos arquivos `DEPOIMENTO 2.mp4` (Drive `1dNNTi01iXP6RNLKue9YX8r5B5KgkSVYG`) e `depoimento 4.mp4` (Drive `1yAmYmVzdAV0uU7AK2xg-RD0YuDBXut6i`), localizados em `SITES JSON / ESTRUTURA PROPRIA > Angulo Nervos/dores > Depoimentos video`. Foram mantidas apenas uma recomendação geral e uma mensagem de agradecimento. Partes com alegações terapêuticas, promessa de resultado ou abandono de medicamentos não foram publicadas. Vídeos convertidos para H.264, com reprodução manual e capas locais.
+
+Os arquivos `Depoimento 1.mp4` (Drive `10ncPD-VXHUGXw4p-dUhvXNtppfoONY17`) e `depoimento 3.mp4` (Drive `1L6oNnNWovg2KvnRjmeEwLb8euIWXLh21`) não foram publicados porque não oferecem um trecho útil que permaneça neutro sem alterar o contexto do relato. O antigo registro da caixa também foi removido da seção a pedido do proprietário.
 
 Identificação empresarial alterada para `NUVESSA BEM ESTAR LTDA` conforme informado pelo proprietário; cadastro empresarial não verificado e nenhum CNPJ adicionado.
 
 | Arquivo local | Uso | Origem |
 |---|---|---|
-| `assets/images/frasco-oficial-02.webp` | Imagem principal do produto | Pasta pública “💊 FRASCOS PNG” no Drive principal fornecido pelo afiliado: `1gtRBG5jJjgROlyhknQoVGPDKDO4LZ3GR` |
-| `assets/images/kit-source-02.jpeg` | Foto autorizada na vitrine do kit de 8 caixas | Pasta pública “💊 FRASCOS PNG” no mesmo Drive principal |
-| `assets/images/kit-source-03.jpeg` | Foto autorizada na vitrine do kit de 12 caixas | Pasta pública “💊 FRASCOS PNG” no mesmo Drive principal |
-| `assets/images/kit-source-04.jpeg` | Foto autorizada na vitrine do kit de 1 caixa | Pasta pública “💊 FRASCOS PNG” no mesmo Drive principal |
+| `assets/images/frasco-oficial-02.webp` | Hero e vitrine do kit de 1 caixa | Pasta pública “💊 FRASCOS PNG” no Drive principal fornecido pelo afiliado: `1gtRBG5jJjgROlyhknQoVGPDKDO4LZ3GR` |
+| `assets/images/kit-3-caixas-massageador.png` | Vitrine com 3 embalagens e massageador | Composição criada para o projeto com a ferramenta integrada de imagens, usando a embalagem oficial e a página do produtor apenas como referências visuais |
+| `assets/images/kit-5-caixas-massageador.png` | Vitrine com 5 embalagens e massageador | Composição criada para o projeto com a ferramenta integrada de imagens, usando a embalagem oficial e a página do produtor apenas como referências visuais |
+| `assets/images/kit-8-caixas-massageador.png` | Vitrine com 8 embalagens e massageador | Composição criada para o projeto com a ferramenta integrada de imagens, usando a embalagem oficial e a página do produtor apenas como referências visuais |
+| `assets/images/kit-12-caixas-massageador.png` | Vitrine com 12 embalagens e massageador | Composição criada para o projeto com a ferramenta integrada de imagens, usando a embalagem oficial e a página do produtor apenas como referências visuais |
 | `assets/icons/favicon.svg` | Símbolo abstrato neutro | Criado para este projeto; não representa certificação médica |
 
 Nenhuma imagem é carregada por hotlink. Os arquivos brutos que continham dados pessoais não fazem parte do pacote publicável.

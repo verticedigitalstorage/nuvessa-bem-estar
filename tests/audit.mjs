@@ -23,9 +23,14 @@ check(cfg.OFFERS.filter(o => o.placement === "extended").map(o => o.boxes).join(
 check(cfg.SHOW_SPECIAL_OFFERS === false && cfg.SPECIAL_OFFERS.length === 4, "Ofertas especiais ocultas e configuráveis por uma chave");
 check(cfg.GUARANTEE_DAYS === 90 && index.includes("Garantia de 90 dias"), "Garantia consistente em 90 dias");
 check(cfg.LEGAL_RESPONSIBLE === "NUVESSA BEM ESTAR LTDA" && cfg.COMMERCIAL_EMAIL === "nuvessabemestar@gmail.com", "Responsável e contato comercial configurados");
+check(cfg.BUSINESS_NAME === "Nuvessa Bem & Estar" && index.includes("Nuvessa <b>Bem &amp; Estar</b>"), "Nova marca Nuvessa Bem & Estar aplicada");
+check(index.includes('class="brand-logo"') && index.includes('src="assets/icons/favicon.svg"') && !index.includes('class="brand-mark"'), "Símbolo visual substitui o antigo N no cabeçalho");
+check(!index.includes('class="trust-row"') && !index.includes("Informação clara") && !index.includes("Escolha simples"), "Bloco genérico de confiança removido");
+check(index.indexOf('id="experiencias"') < index.indexOf('id="ofertas"') && index.indexOf('id="ofertas"') < index.indexOf('id="produto"'), "Jornada ordenada em depoimentos, kits e informação do produto");
 check(cfg.BASE_URL === "https://nuvessabemestar.com.br" && read("sitemap.xml").includes(cfg.BASE_URL), "Domínio futuro centralizado no SEO e sitemap");
 check(index.includes('id="experiencias"') && index.includes("depoimento-recomendacao.mp4") && index.includes("depoimento-agradecimento.mp4") && index.toLowerCase().includes("não apresentar alegações de saúde"), "Depoimentos em vídeo com aviso de transparência");
-check((index.match(/role="tabpanel"/g) || []).length === 3 && mainJs.includes("setupTestimonials") && mainJs.includes("ArrowRight"), "Navegação dos vídeos funciona por botões, setas e teclado");
+check((index.match(/class="story-card/g) || []).length === 2 && index.includes('class="stories-grid"') && !index.includes("recebimento-caixa"), "Somente os dois depoimentos neutros ficam visíveis, sem o vídeo da caixa");
+check(index.includes('class="mobile-offer-bar"') && index.includes('class="header-cta"'), "Acesso aos kits permanece visível no cabeçalho e no celular");
 check(!index.includes("Ermelinda") && !index.includes("94226-8188") && !index.includes("DESTINATÁRIO"), "Provas sociais publicadas sem dados pessoais visíveis no HTML");
 check(!content.includes("[responsável legal a definir]") && !content.includes("[e-mail comercial a definir]") && !content.includes("seu-dominio-aqui"), "Nenhum placeholder público restante");
 check(cfg.OFFERS.every(o => o.image && fs.existsSync(path.join(root, o.image))), "Todos os kits possuem imagem local configurada");

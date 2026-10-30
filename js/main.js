@@ -44,7 +44,7 @@
       <h3>${offer.boxes} ${offer.boxes === 1 ? "caixa" : "caixas"}</h3>
       ${offer.gift ? `<p class="offer-gift">${offer.gift}</p>` : ""}
       <p class="offer-price">${offer.price}</p>
-      <a class="button button--buy" href="${trackedCheckout(offer.url)}" data-offer="${offer.id}" rel="sponsored noopener">Escolher este kit</a>
+      <a class="button button--buy" href="${trackedCheckout(offer.url)}" data-offer="${offer.id}" rel="sponsored noopener">Escolher ${offer.boxes} ${offer.boxes === 1 ? "caixa" : "caixas"}</a>
       <p class="offer-note">A compra é concluída em ambiente de pagamento seguro.</p>`;
     return article;
   }
@@ -91,7 +91,6 @@
   }
 
   function setupPage() {
-    setupTestimonials();
     document.querySelectorAll("[data-guarantee]").forEach((node) => node.textContent = cfg.GUARANTEE_DAYS);
     document.querySelectorAll("[data-email]").forEach((node) => node.textContent = cfg.COMMERCIAL_EMAIL);
     document.querySelectorAll("[data-email-link]").forEach((node) => node.href = `mailto:${cfg.COMMERCIAL_EMAIL}`);
@@ -105,42 +104,6 @@
       if (offersAnchor) recordEvent("view_offers");
     }, { capture: true });
     document.querySelector("#year").textContent = new Date().getFullYear();
-  }
-
-  function setupTestimonials() {
-    const tabs = [...document.querySelectorAll("[data-testimonial]")];
-    const panels = tabs.map((tab) => document.getElementById(tab.dataset.testimonial));
-    const status = document.querySelector("#testimonial-status");
-    let current = 0;
-
-    function select(index, moveFocus = false) {
-      current = (index + tabs.length) % tabs.length;
-      panels.forEach((panel, i) => {
-        panel.hidden = i !== current;
-        if (i !== current) panel.querySelector("video")?.pause();
-      });
-      tabs.forEach((tab, i) => {
-        const active = i === current;
-        tab.classList.toggle("is-active", active);
-        tab.setAttribute("aria-selected", String(active));
-        tab.tabIndex = active ? 0 : -1;
-      });
-      status.textContent = `Vídeo ${current + 1} de ${tabs.length}`;
-      if (moveFocus) tabs[current].focus();
-    }
-
-    tabs.forEach((tab, index) => {
-      tab.addEventListener("click", () => select(index));
-      tab.addEventListener("keydown", (event) => {
-        if (!["ArrowLeft", "ArrowRight", "Home", "End"].includes(event.key)) return;
-        event.preventDefault();
-        if (event.key === "Home") select(0, true);
-        else if (event.key === "End") select(tabs.length - 1, true);
-        else select(current + (event.key === "ArrowRight" ? 1 : -1), true);
-      });
-    });
-    document.querySelector("#testimonial-prev")?.addEventListener("click", () => select(current - 1));
-    document.querySelector("#testimonial-next")?.addEventListener("click", () => select(current + 1));
   }
 
   renderOffers();
