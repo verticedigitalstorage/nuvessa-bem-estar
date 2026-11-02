@@ -8,7 +8,7 @@
     const event = { name, detail, timestamp: Date.now() };
     eventQueue.push(event);
     window.dispatchEvent(new CustomEvent("nervocure:event", { detail: event }));
-    if (window.fbq && consentState() === "accepted") window.fbq("trackCustom", name, detail);
+    if (window.NUVESSA_META_PIXEL) window.NUVESSA_META_PIXEL.trackCustom(name, detail);
   }
 
   function trackedCheckout(rawUrl) {
@@ -67,23 +67,11 @@
 
   function consentState() { return localStorage.getItem("nervocure_consent") || "unset"; }
 
-  function loadMetaPixel() {
-    if (!cfg.META_PIXEL_ID || consentState() !== "accepted" || window.fbq) return;
-    /* Meta Pixel base code is injected only after affirmative consent. */
-    window.fbq = function () { window.fbq.callMethod ? window.fbq.callMethod.apply(window.fbq, arguments) : window.fbq.queue.push(arguments); };
-    window.fbq.queue = []; window.fbq.loaded = true; window.fbq.version = "2.0";
-    const script = document.createElement("script");
-    script.async = true; script.src = "https://connect.facebook.net/pt_BR/fbevents.js";
-    document.head.append(script);
-    window.fbq("init", cfg.META_PIXEL_ID);
-    window.fbq("track", "PageView");
-  }
-
   function setConsent(value) {
     localStorage.setItem("nervocure_consent", value);
     document.querySelector("#cookie-banner").hidden = true;
     document.querySelector("#cookie-status").textContent = value === "accepted" ? "Cookies opcionais aceitos." : "Cookies opcionais recusados.";
-    if (value === "accepted") loadMetaPixel();
+    if (value === "accepted" && window.NUVESSA_META_PIXEL) window.NUVESSA_META_PIXEL.load();
   }
 
   function setupConsent() {
@@ -92,7 +80,7 @@
     document.querySelector("#accept-cookies").addEventListener("click", () => setConsent("accepted"));
     document.querySelector("#reject-cookies").addEventListener("click", () => setConsent("rejected"));
     document.querySelector("#review-cookies").addEventListener("click", () => { banner.hidden = false; banner.focus(); });
-    if (consentState() === "accepted") loadMetaPixel();
+    if (consentState() === "accepted" && window.NUVESSA_META_PIXEL) window.NUVESSA_META_PIXEL.load();
   }
 
   function setupPage() {

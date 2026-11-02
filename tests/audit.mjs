@@ -13,7 +13,9 @@ vm.runInNewContext(read("js/config.js"), sandbox);
 const cfg = sandbox.window.NERVO_CONFIG;
 const index = read("index.html");
 const mainJs = read("js/main.js");
-const deployFiles = ["index.html", "privacidade.html", "termos.html", "aviso-legal.html", "404.html", "css/styles.css", "js/config.js", "js/main.js"];
+const metaPixelJs = read("js/meta-pixel.js");
+const headers = read("_headers");
+const deployFiles = ["index.html", "privacidade.html", "termos.html", "aviso-legal.html", "404.html", "css/styles.css", "js/config.js", "js/meta-pixel.js", "js/main.js"];
 const content = deployFiles.map(read).join("\n").toLowerCase();
 
 check(cfg.OFFERS.length === 5, "Cinco ofertas públicas configuradas");
@@ -38,8 +40,30 @@ check(!content.includes("[responsável legal a definir]") && !content.includes("
 check(cfg.OFFERS.every(o => o.image && fs.existsSync(path.join(root, o.image))), "Todos os kits possuem imagem local configurada");
 check(cfg.OFFERS.every(o => o.originalPrice && o.installments === 12 && o.installmentPrice && o.price), "Cinco kits possuem preço anterior, parcelamento e valor à vista conforme a referência do produtor");
 check(mainJs.includes('class="offer-quantity"') && mainJs.includes('loading="lazy"'), "Cards exibem quantidade e carregam imagens sob demanda");
-check(cfg.META_PIXEL_ID === "", "Meta Pixel vazio por padrão");
-check(mainJs.includes('consentState() !== "accepted"') && mainJs.includes("!cfg.META_PIXEL_ID"), "Pixel protegido por consentimento e configuração");
+check(cfg.META_PIXEL_ID === "1144579295213270", "Meta Pixel configurado com o ID informado");
+check(index.indexOf('src="js/config.js"') < index.indexOf('src="js/meta-pixel.js"') && index.indexOf('src="js/meta-pixel.js"') < index.indexOf('src="js/main.js"'), "Scripts externos carregam na ordem configuração, Pixel e aplicação");
+check(!index.includes("fbq(") && !index.includes("fbevents.js") && !/<script(?![^>]*\bsrc=)[^>]*>[\s\S]*?<\/script>/i.test(index), "Index não contém inicialização inline ou duplicada do Pixel");
+check(metaPixelJs.includes('window.fbq("track", "PageView")') && !metaPixelJs.includes('"Purchase"'), "Pixel envia PageView e não dispara Purchase na página");
+check(metaPixelJs.includes('localStorage.getItem(consentKey) === "accepted"') && mainJs.includes("NUVESSA_META_PIXEL.load()"), "Pixel permanece condicionado ao consentimento");
+check((content.match(/1144579295213270/g) || []).length === 1, "ID do Pixel possui uma única configuração no projeto público");
+
+const appendedScripts = [];
+const pixelSandbox = {
+  window: { NERVO_CONFIG: cfg },
+  localStorage: { getItem: () => "accepted" },
+  document: {
+    getElementById: () => null,
+    createElement: () => ({}),
+    head: { append: (node) => appendedScripts.push(node) }
+  }
+};
+vm.runInNewContext(metaPixelJs, pixelSandbox);
+pixelSandbox.window.NUVESSA_META_PIXEL.load();
+pixelSandbox.window.NUVESSA_META_PIXEL.load();
+const pixelQueue = pixelSandbox.window.fbq.queue.map(args => Array.from(args));
+check(appendedScripts.length === 1 && appendedScripts[0].src === "https://connect.facebook.net/pt_BR/fbevents.js", "Biblioteca oficial da Meta é carregada uma única vez");
+check(pixelQueue.filter(args => args[0] === "init" && args[1] === cfg.META_PIXEL_ID).length === 1, "Pixel é inicializado uma única vez");
+check(pixelQueue.filter(args => args[0] === "track" && args[1] === "PageView").length === 1, "PageView é enfileirado uma única vez após consentimento");
 
 for (const offer of [...cfg.OFFERS, ...cfg.SPECIAL_OFFERS]) {
   const url = new URL(offer.url);
@@ -65,7 +89,9 @@ const internalLinks = [...index.matchAll(/(?:href|src)="(?!https?:|#|mailto:)([^
 for (const target of internalLinks) check(fs.existsSync(path.join(root, target)), `Recurso interno existe: ${target}`);
 check(index.includes('width="768" height="768"') && index.includes('fetchpriority="high"'), "Imagem principal tem dimensões e prioridade declaradas");
 check(index.includes('id="cookie-banner"') && index.includes('id="reject-cookies"') && index.includes('id="review-cookies"'), "Consentimento permite aceitar, recusar e rever");
-check(read("_headers").includes("Content-Security-Policy") && read("_headers").includes("X-Content-Type-Options"), "Cabeçalhos de segurança configurados");
+check(headers.includes("Content-Security-Policy") && headers.includes("X-Content-Type-Options"), "Cabeçalhos de segurança configurados");
+check(!headers.includes("'unsafe-inline'") && headers.includes("script-src 'self' https://connect.facebook.net"), "CSP permite o script externo da Meta sem unsafe-inline");
+check(headers.includes("img-src 'self' data: https://www.facebook.com") && headers.includes("connect-src 'self' https://www.facebook.com https://connect.facebook.net"), "CSP permite beacon e conexões necessárias do Meta Pixel");
 
 console.log(`PASS: ${pass.length}`);
 pass.forEach(item => console.log(`  ✓ ${item}`));

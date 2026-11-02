@@ -2,7 +2,7 @@
 
 Loja estática, mobile-first e sem dependências para apresentar o catálogo da Nuvessa Saúde & Bem-Estar. A primeira vitrine apresenta o NervoCure Max e conclui a compra em ambiente externo seguro.
 
-> **VERSÃO LOCAL PARA REVISÃO — NÃO PUBLICAR.** Esta cópia contém quatro depoimentos integrais com alegações pessoais de saúde ainda não verificadas para publicidade. Antes de qualquer publicação ou campanha, substitua-os pelas versões revisadas e execute novamente os testes regulatórios.
+> **VERSÃO COMPLETA PARA ATUALIZAÇÃO MANUAL.** Os quatro depoimentos integrais são carregados pelo Cloudflare R2. Antes de campanhas, recomenda-se revisão jurídica do conteúdo audiovisual e das alegações pessoais apresentadas.
 
 ## Direção visual atual
 
@@ -12,7 +12,7 @@ A página usa como referência de ritmo comercial a página pública do produto:
 
 ### GitHub + Cloudflare Pages (recomendado)
 
-1. Extraia `nervocuremax-github-completo.zip` em uma pasta.
+1. Extraia o ZIP final entregue em uma pasta vazia.
 2. Crie o repositório `nervocuremax-landing-afiliado` no GitHub e envie o conteúdo extraído. `index.html`, `build.mjs`, `assets`, `css` e `js` devem ficar na raiz do repositório. Não envie apenas o ZIP.
 3. No Cloudflare Pages, crie um projeto conectado a esse repositório e selecione a branch `main`.
 4. Framework: `None`. Comando de build: `npm run build`. Comando de deploy: `npx wrangler deploy`. Diretório raiz: deixe vazio (raiz do repositório). O arquivo `wrangler.jsonc` limita a publicação à pasta `dist/`.
@@ -25,7 +25,7 @@ O build usa Node.js e funciona no ambiente Linux do Cloudflare. O Wrangler é in
 
 Use `nervocuremax-cloudflare-publicar.zip`, que contém somente os arquivos públicos, com `index.html` na raiz. Envie esse ZIP na opção de upload de arquivos do Cloudflare Pages. Se a interface solicitar uma pasta, extraia o ZIP e selecione a pasta extraída. Não há comando de build nesse modo.
 
-O nome e o e-mail já estão preenchidos. O domínio configurado é `https://nuvessabemestar.com.br`. Se usar outro endereço definitivo, ajuste `BASE_URL` em `js/config.js` e as URLs em `index.html`, `robots.txt` e `sitemap.xml`. Meta Pixel vazio é intencional.
+O nome e o e-mail já estão preenchidos. O domínio configurado é `https://nuvessabemestar.com.br`. Se usar outro endereço definitivo, ajuste `BASE_URL` em `js/config.js` e as URLs em `index.html`, `robots.txt` e `sitemap.xml`.
 
 ### Publicação pelo terminal com Wrangler
 
@@ -53,12 +53,14 @@ Edite apenas `js/config.js` para alterar:
 - `LEGAL_RESPONSIBLE`: NUVESSA BEM ESTAR LTDA;
 - `COMMERCIAL_EMAIL`: `nuvessabemestar@gmail.com`;
 - `BASE_URL`: preparado para `https://nuvessabemestar.com.br`;
-- `META_PIXEL_ID`: ID futuro do Meta Pixel;
+- `META_PIXEL_ID`: `1144579295213270`;
 - `GUARANTEE_DAYS`: configurado em `90`, conforme a página atual do produtor verificada em 29/10/2026;
 - `SHOW_SPECIAL_OFFERS`: altere para `true` somente após confirmar as condições das ofertas ocultas;
 - `OFFERS` e `SPECIAL_OFFERS`: links, valores e disponibilidade.
 
-Com `META_PIXEL_ID: ""`, nenhum script da Meta é carregado. Mesmo após inserir um ID, o Pixel só é iniciado depois do consentimento para cookies opcionais.
+O Meta Pixel é inicializado pelo arquivo externo `js/meta-pixel.js`, sem JavaScript inline e sem `unsafe-inline` na CSP. O script oficial da Meta e o evento `PageView` só são carregados depois do consentimento para cookies opcionais. O estado interno impede inicialização e `PageView` duplicados. Nenhum evento `Purchase` é disparado por esta página e nenhum token de API de Conversões existe no front-end.
+
+O fallback tradicional em `<noscript>` não foi incluído porque enviaria uma requisição de rastreamento antes que um visitante sem JavaScript pudesse consentir. Isso preserva a regra de consentimento adotada pelo projeto.
 
 ## Testes
 
@@ -106,7 +108,6 @@ Nenhuma imagem é carregada por hotlink. Este projeto de backup inclui os quatro
 
 - registrar e conectar `nuvessabemestar.com.br` à hospedagem;
 - realizar pesquisa formal de disponibilidade da marca Nuvessa no INPI antes do registro;
-- informar Meta Pixel ID, se for utilizado;
 - revisar juridicamente o rótulo atual antes de eventual inclusão de composição, quantidades, advertências e modo de uso;
 - fazer revisão jurídica final dos textos legais e das condições do produtor/Braip.
 
@@ -123,6 +124,7 @@ aviso-legal.html
 assets/
 css/styles.css
 js/config.js
+js/meta-pixel.js
 js/main.js
 tests/audit.mjs
 _headers

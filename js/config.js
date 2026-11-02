@@ -5,7 +5,7 @@ window.NERVO_CONFIG = Object.freeze({
   LEGAL_RESPONSIBLE: "NUVESSA BEM ESTAR LTDA",
   COMMERCIAL_EMAIL: "nuvessabemestar@gmail.com",
   BASE_URL: "https://nuvessabemestar.com.br",
-  META_PIXEL_ID: "",
+  META_PIXEL_ID: "1144579295213270",
   GUARANTEE_DAYS: 90,
   SHOW_SPECIAL_OFFERS: false,
   TRACKABLE_PARAMS: [

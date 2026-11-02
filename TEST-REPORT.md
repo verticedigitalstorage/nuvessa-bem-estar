@@ -23,7 +23,7 @@ Data: 30 de outubro de 2026
 | Garantia de 90 dias | PASS | Condição verificada na página atual do produtor; configuração, hero, selo, seção e FAQ coerentes |
 | Imagens nos cinco kits | PASS | Cada card representa visualmente 1, 3, 5, 8 ou 12 embalagens; os quatro kits com brinde exibem o massageador e usam carregamento tardio |
 | Condições promocionais | PASS | Preço anterior, 12 parcelas e valor à vista dos cinco kits conferidos na página de referência do produtor em 30/10/2026; checkout prevalece |
-| Depoimentos em vídeo | PASS | Quatro arquivos integrais do último Drive, reprodução manual e aviso visível de prévia interna |
+| Depoimentos em vídeo | PASS | Quatro arquivos integrais do último Drive carregados pelo Cloudflare R2 |
 | Exibição dos depoimentos | PASS | Os quatro vídeos aparecem uma única vez; o antigo vídeo da caixa permanece removido |
 | Redesign inspirado na referência | PASS | Hero comercial, acentos laranja, produto ampliado e prova social priorizada, sem copiar alegações ou identidade de terceiros |
 | Navegação de conversão | PASS | Botão de kits no cabeçalho e barra fixa no celular levam diretamente às ofertas |
@@ -31,7 +31,11 @@ Data: 30 de outubro de 2026
 | Domínio preparado | PASS | Canonical, configuração, Open Graph, sitemap e robots preparados para `nuvessabemestar.com.br` |
 | Busca por referências antigas e alegações indevidas | PASS | Nenhuma ocorrência encontrada no código publicável |
 | Consentimento de cookies | PASS | Aceitar, recusar e rever testados |
-| Meta Pixel vazio | PASS | Nenhum script da Meta carregado e nenhum erro no console |
+| Meta Pixel e consentimento | PASS | ID 1144579295213270 configurado; biblioteca, inicialização e PageView únicos após consentimento |
+| Meta Pixel recusado | PASS | Em origem limpa, a recusa manteve zero scripts da Meta e zero erros no console |
+| Meta Pixel aceito | PASS | Em origem limpa, aceitar carregou a biblioteca/configuração oficial do ID e ocultou o banner sem erro de CSP |
+| CSP do Pixel | PASS | `script-src`, `connect-src` e `img-src` permitem somente os hosts necessários; sem `unsafe-inline` |
+| Evento Purchase | PASS | Nenhuma ocorrência ou disparo de `Purchase` no front-end |
 | Páginas legais | PASS | Privacidade, Termos e Aviso Legal retornaram HTTP 200 |
 | Página 404 | PASS | Rota inexistente retornou HTTP 404 com página própria |
 | Recursos internos | PASS | Imagem, CSS, JS, favicon e links internos encontrados |
@@ -39,11 +43,12 @@ Data: 30 de outubro de 2026
 | Auditoria equivalente a Lighthouse | PASS | HTML semântico, árvore acessível, foco, contraste, SEO, dimensões de imagem, preload, recursos locais, segurança e peso dos recursos revisados; CLI Lighthouse não estava disponível no ambiente |
 | Build estático | PASS | Conteúdo gerado em `dist/` e servido localmente |
 
-Auditoria automatizada: **67 PASS / 0 FAIL**.
+Auditoria automatizada: **71 PASS / 0 FAIL**.
 
 ## Limitações documentadas
 
 - A composição e o modo de uso foram omitidos nesta versão até revisão regulatória do rótulo atual.
 - Prazo de entrega absoluto não foi publicado.
-- O domínio está preparado no código, mas ainda precisa ser registrado e conectado; o Meta Pixel permanece vazio até a criação do ID.
-- Esta versão é exclusivamente local e não foi preparada nem enviada ao Cloudflare. Os vídeos integrais excedem o limite individual de assets do Workers e contêm conteúdo que exige revisão antes de uma versão pública.
+- O domínio está preparado no código, mas ainda precisa ser registrado e conectado. O Meta Pixel usa arquivo externo e permanece bloqueado até consentimento.
+- Esta atualização do Pixel foi preparada e testada localmente, mas não foi enviada ao GitHub nem publicada na Cloudflare, conforme solicitado. Os vídeos integrais permanecem no R2 e não são incluídos no pacote GitHub.
+- O navegador local confirmou o carregamento da biblioteca oficial e da configuração do ID sem erro de CSP. A confirmação final no Gerenciador de Eventos/Meta Pixel Helper depende da publicação manual no domínio real e do consentimento do visitante.
