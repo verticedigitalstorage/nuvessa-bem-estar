@@ -4,7 +4,7 @@ window.NERVO_CONFIG = Object.freeze({
   BUSINESS_NAME: "Nuvessa Saúde & Bem-Estar",
   LEGAL_RESPONSIBLE: "NUVESSA BEM ESTAR LTDA",
   COMMERCIAL_EMAIL: "nuvessabemestar@gmail.com",
-  BASE_URL: "https://nuvessabemestar.com.br",
+  BASE_URL: "https://nuvessasaude.com.br",
   META_PIXEL_ID: "1144579295213270",
   GUARANTEE_DAYS: 90,
   SHOW_SPECIAL_OFFERS: false,
