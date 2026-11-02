@@ -58,6 +58,8 @@ Edite apenas `js/config.js` para alterar:
 - `SHOW_SPECIAL_OFFERS`: altere para `true` somente após confirmar as condições das ofertas ocultas;
 - `OFFERS` e `SPECIAL_OFFERS`: links, valores e disponibilidade.
 
+As ofertas públicas de 1, 3, 5, 8 e 12 caixas usam URLs `/campanhas/cpa/` fornecidas pelo afiliado. As ofertas ocultas de 4 e 6 caixas também foram atualizadas para campanhas; 2 caixas e plano mensal mantêm os links anteriores por não terem recebido campanha correspondente. Consulte `RELATORIO-LINKS-CAMPANHAS-BRAIP.md`.
+
 O Meta Pixel é inicializado pelo arquivo externo `js/meta-pixel.js`, sem JavaScript inline e sem `unsafe-inline` na CSP. O script oficial da Meta e o evento `PageView` só são carregados depois do consentimento para cookies opcionais. O estado interno impede inicialização e `PageView` duplicados. Nenhum evento `Purchase` é disparado por esta página e nenhum token de API de Conversões existe no front-end.
 
 O fallback tradicional em `<noscript>` não foi incluído porque enviaria uma requisição de rastreamento antes que um visitante sem JavaScript pudesse consentir. Isso preserva a regra de consentimento adotada pelo projeto.
@@ -136,4 +138,4 @@ dist/                 # gerado pelo build
 
 ## Observação de afiliação
 
-Os links preservam `pl`, `ck=cherq188` e `af=afidn9137l`. A função de navegação acrescenta, quando presentes, `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_term` e `fbclid`, sem aceitar que a visita sobrescreva os parâmetros essenciais.
+As novas URLs de campanha redirecionaram, na verificação de 2/11/2026, para o `pl` correto com `ck=cherq188` e `af=afidn9137l`. A função de navegação acrescenta, quando presentes, `utm_source`, `utm_medium`, `utm_campaign`, `utm_content`, `utm_term` e `fbclid`. Ela não injeta parâmetros essenciais nas URLs de campanha; nos dois links legados remanescentes, impede que a visita sobrescreva `pl`, `ck` ou `af`.

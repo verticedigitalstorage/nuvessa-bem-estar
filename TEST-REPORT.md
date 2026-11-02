@@ -1,6 +1,6 @@
 # Relatório final de testes
 
-Data: 30 de outubro de 2026
+Data: 2 de novembro de 2026
 
 | Verificação | Resultado | Evidência |
 |---|---:|---|
@@ -16,10 +16,12 @@ Data: 30 de outubro de 2026
 | Kit de 5 caixas com maior destaque | PASS | Borda, selo e elevação exclusivos |
 | Kits de 8 e 12 caixas acessíveis | PASS | Seção expansível testada no navegador |
 | Ofertas de 2, 4, 6 caixas e mensal ocultas | PASS | `SHOW_SPECIAL_OFFERS: false`; ativação por uma configuração |
-| Cinco links públicos corretos | PASS | `pl`, `ck` e `af=afidn9137l` validados |
-| Links especiais documentados | PASS | Quatro links preservados no arquivo de configuração |
-| Propagação de UTMs e `fbclid` | PASS | URL real dos cards conferida com parâmetros de QA |
-| Proteção dos parâmetros essenciais | PASS | Entrada externa não substitui `pl`, `ck` ou `af` |
+| Cinco links públicos corretos | PASS | Campanhas de 1, 3, 5, 8 e 12 caixas correspondem rigorosamente aos kits |
+| Links especiais documentados | PASS | Campanhas de 4 e 6 atualizadas; 2 caixas e mensal preservados por falta de campanha correspondente |
+| Redirecionamentos Braip | PASS | Sete campanhas retornaram HTTP 200 e chegaram ao `pl`, `ck` e `af=afidn9137l` esperados |
+| Propagação de UTMs e `fbclid` | PASS | Campanha de 5 caixas manteve os parâmetros até o checkout final |
+| Links renderizados no navegador | PASS | Os cinco botões públicos exibiram a campanha correta com UTMs e `fbclid`; 8 e 12 permaneceram na área expansível |
+| Proteção dos parâmetros essenciais | PASS | Campanhas não recebem parâmetros artificiais; links legados não aceitam sobrescrita de `pl`, `ck` ou `af` |
 | Garantia de 90 dias | PASS | Condição verificada na página atual do produtor; configuração, hero, selo, seção e FAQ coerentes |
 | Imagens nos cinco kits | PASS | Cada card representa visualmente 1, 3, 5, 8 ou 12 embalagens; os quatro kits com brinde exibem o massageador e usam carregamento tardio |
 | Condições promocionais | PASS | Preço anterior, 12 parcelas e valor à vista dos cinco kits conferidos na página de referência do produtor em 30/10/2026; checkout prevalece |
@@ -43,7 +45,7 @@ Data: 30 de outubro de 2026
 | Auditoria equivalente a Lighthouse | PASS | HTML semântico, árvore acessível, foco, contraste, SEO, dimensões de imagem, preload, recursos locais, segurança e peso dos recursos revisados; CLI Lighthouse não estava disponível no ambiente |
 | Build estático | PASS | Conteúdo gerado em `dist/` e servido localmente |
 
-Auditoria automatizada: **71 PASS / 0 FAIL**.
+Auditoria automatizada: **72 PASS / 0 FAIL**.
 
 ## Limitações documentadas
 
@@ -52,3 +54,4 @@ Auditoria automatizada: **71 PASS / 0 FAIL**.
 - O domínio está preparado no código, mas ainda precisa ser registrado e conectado. O Meta Pixel usa arquivo externo e permanece bloqueado até consentimento.
 - Esta atualização do Pixel foi preparada e testada localmente, mas não foi enviada ao GitHub nem publicada na Cloudflare, conforme solicitado. Os vídeos integrais permanecem no R2 e não são incluídos no pacote GitHub.
 - O navegador local confirmou o carregamento da biblioteca oficial e da configuração do ID sem erro de CSP. A confirmação final no Gerenciador de Eventos/Meta Pixel Helper depende da publicação manual no domínio real e do consentimento do visitante.
+- Os redirecionamentos exibiram `afidn9137l`, mas o crédito de comissão e os eventos de conversão da Braip não podem ser comprovados sem teste real nos respectivos painéis.

@@ -65,17 +65,38 @@ check(appendedScripts.length === 1 && appendedScripts[0].src === "https://connec
 check(pixelQueue.filter(args => args[0] === "init" && args[1] === cfg.META_PIXEL_ID).length === 1, "Pixel é inicializado uma única vez");
 check(pixelQueue.filter(args => args[0] === "track" && args[1] === "PageView").length === 1, "PageView é enfileirado uma única vez após consentimento");
 
-for (const offer of [...cfg.OFFERS, ...cfg.SPECIAL_OFFERS]) {
-  const url = new URL(offer.url);
-  check(url.hostname === "pay.braip.co" && url.searchParams.get("af") === "afidn9137l" && url.searchParams.get("ck") === "cherq188" && Boolean(url.searchParams.get("pl")), `Link ${offer.id} preserva pl, ck e afiliado`);
+const expectedCampaigns = new Map([
+  ["1-caixa", "https://ev.braip.com/campanhas/cpa/camm7lxep"],
+  ["3-caixas", "https://ev.braip.com/campanhas/cpa/cam91zo6o"],
+  ["4-caixas-especial", "https://ev.braip.com/campanhas/cpa/camk75dgr"],
+  ["5-caixas", "https://ev.braip.com/campanhas/cpa/camgmdlrp"],
+  ["6-caixas-especial", "https://ev.braip.com/campanhas/cpa/cam182xmv"],
+  ["8-caixas", "https://ev.braip.com/campanhas/cpa/came0o5pl"],
+  ["12-caixas", "https://ev.braip.com/campanhas/cpa/cam0m268k"]
+]);
+const allOffers = [...cfg.OFFERS, ...cfg.SPECIAL_OFFERS];
+for (const [id, expectedUrl] of expectedCampaigns) {
+  check(allOffers.find(offer => offer.id === id)?.url === expectedUrl, `Campanha correta configurada para ${id}`);
+}
+for (const id of ["2-caixas-especial", "mensal-1-caixa"]) {
+  const url = new URL(allOffers.find(offer => offer.id === id).url);
+  check(url.hostname === "pay.braip.co" && url.searchParams.get("af") === "afidn9137l" && url.searchParams.get("ck") === "cherq188" && Boolean(url.searchParams.get("pl")), `Link legado de ${id} preservado por falta de campanha correspondente`);
 }
 
-const sample = new URL(cfg.OFFERS[2].url);
+function withTracking(rawUrl, incoming) {
+  const url = new URL(rawUrl);
+  const essential = Object.fromEntries(["pl", "ck", "af"].map(key => [key, url.searchParams.get(key)]).filter(([, value]) => Boolean(value)));
+  for (const key of cfg.TRACKABLE_PARAMS) if (incoming.has(key) && !url.searchParams.has(key)) url.searchParams.set(key, incoming.get(key).slice(0, 250));
+  for (const [key, value] of Object.entries(essential)) url.searchParams.set(key, value);
+  return url;
+}
+
 const incoming = new URLSearchParams("utm_source=facebook&utm_campaign=teste&fbclid=abc123&af=tentativa");
-for (const key of cfg.TRACKABLE_PARAMS) if (incoming.has(key) && !sample.searchParams.has(key)) sample.searchParams.set(key, incoming.get(key));
-Object.entries({ ...cfg.ESSENTIAL_AFFILIATE_PARAMS, pl: new URL(cfg.OFFERS[2].url).searchParams.get("pl") }).forEach(([k,v]) => sample.searchParams.set(k,v));
-check(sample.searchParams.get("utm_source") === "facebook" && sample.searchParams.get("fbclid") === "abc123", "UTMs e fbclid são propagados");
-check(sample.searchParams.get("af") === "afidn9137l" && sample.searchParams.get("pl") === "plag1ngm", "Parâmetros essenciais não são sobrescritos por entrada externa");
+const campaignSample = withTracking(cfg.OFFERS.find(offer => offer.id === "5-caixas").url, incoming);
+check(campaignSample.searchParams.get("utm_source") === "facebook" && campaignSample.searchParams.get("fbclid") === "abc123", "UTMs e fbclid são propagados para campanhas");
+check(!campaignSample.searchParams.has("af") && !campaignSample.searchParams.has("ck") && !campaignSample.searchParams.has("pl"), "URL de campanha não recebe parâmetros essenciais artificiais antes do redirecionamento");
+const legacySample = withTracking(cfg.SPECIAL_OFFERS.find(offer => offer.id === "2-caixas-especial").url, incoming);
+check(legacySample.searchParams.get("af") === "afidn9137l" && legacySample.searchParams.get("ck") === "cherq188" && legacySample.searchParams.get("pl") === "plaq4e6r", "Parâmetros essenciais do link legado não são sobrescritos por entrada externa");
 
 const forbidden = [
   ["aprovado pela ", "anvisa"].join(""), ["aprovado pela ", "fda"].join(""),

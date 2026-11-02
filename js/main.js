@@ -13,14 +13,16 @@
 
   function trackedCheckout(rawUrl) {
     const url = new URL(rawUrl);
-    const required = { ...cfg.ESSENTIAL_AFFILIATE_PARAMS, pl: url.searchParams.get("pl") };
+    const essential = Object.fromEntries(
+      ["pl", "ck", "af"]
+        .map((key) => [key, url.searchParams.get(key)])
+        .filter(([, value]) => Boolean(value))
+    );
     cfg.TRACKABLE_PARAMS.forEach((key) => {
       const value = qs.get(key);
       if (value && !url.searchParams.has(key)) url.searchParams.set(key, value.slice(0, 250));
     });
-    Object.entries(required).forEach(([key, value]) => {
-      if (value) url.searchParams.set(key, value);
-    });
+    Object.entries(essential).forEach(([key, value]) => url.searchParams.set(key, value));
     return url.toString();
   }
 
