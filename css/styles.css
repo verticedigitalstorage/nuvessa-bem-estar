@@ -97,8 +97,6 @@ h1, h2, h3, p { text-wrap: pretty; }
 .proof-next { margin-top: 1.5rem; padding: 1rem 1.2rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; border: 1px solid rgba(255,255,255,.16); border-radius: 18px; background: rgba(255,255,255,.08); }
 .proof-next span { font-weight: 800; }
 .proof-next .button { min-height: 46px; }
-.feedback-disclaimer { margin: 1.15rem 0 0; padding: 1rem 1.2rem; border-left: 3px solid var(--gold); border-radius: 0 12px 12px 0; background: rgba(255,255,255,.08); color: #c9ddd3; font-size: .76rem; }
-
 .offers-section { max-width: 1180px; padding-top: 3.5rem; }
 .offer-guide { display: grid; grid-template-columns: repeat(3, 1fr); gap: .75rem; margin: -1rem 0 2.5rem; }
 .offer-guide span { display: flex; flex-direction: column; padding: 1rem 1.15rem; border: 1px solid var(--line); border-radius: 14px; background: #fff; color: var(--muted); box-shadow: var(--shadow-sm); font-size: .84rem; }
