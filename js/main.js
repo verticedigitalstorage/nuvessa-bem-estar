@@ -50,23 +50,21 @@
 
     article.dataset.offerId = offer.id;
 
-    if (offer.featured) {
-      article.dataset.mobileOrder = "first";
-    }
-
     const image =
       offer.image || "assets/images/frasco-oficial-02.webp";
 
     const imageClass =
       offer.imageClass || "offer-image--product";
 
+    const imageSize = image.includes("frasco-oficial") ? 768 : 900;
+
     article.innerHTML = `
-      ${offer.featured ? '<p class="offer-badge">Mais escolhido</p>' : ""}
+      ${offer.featured ? '<p class="offer-badge">Kit em destaque</p>' : ""}
       <div class="offer-visual">
         <img class="offer-image ${imageClass}"
           src="${image}"
-          width="${imageClass === 'offer-image--photo' ? 720 : 768}"
-          height="${imageClass === 'offer-image--photo' ? 1280 : 768}"
+          width="${imageClass === 'offer-image--photo' ? 720 : imageSize}"
+          height="${imageClass === 'offer-image--photo' ? 1280 : imageSize}"
           loading="lazy"
           decoding="async"
           alt="Imagem do NervoCure Max para o kit de ${offer.boxes} ${offer.boxes === 1 ? "caixa" : "caixas"}">

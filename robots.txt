@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://nuvessabemestar.com.br/sitemap.xml
+Sitemap: https://nuvessasaude.com.br/sitemap.xml

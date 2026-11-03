@@ -6,7 +6,7 @@ Loja estática, mobile-first e sem dependências para apresentar o catálogo da 
 
 ## Direção visual atual
 
-A página usa como referência de ritmo comercial a página pública do produto: hero amplo, embalagem em primeiro plano, acentos laranja, prova social antes das ofertas e kits com comparação clara. O design, a redação e a identidade da Nuvessa são originais. Alegações terapêuticas, urgência artificial, estatísticas não comprovadas e selos de aprovação da referência não foram reproduzidos.
+A página segue uma jornada mobile-first: apresentação objetiva do produto, kits e preços logo no início, depoimentos compactos em seguida e informações responsáveis antes da compra. O design, a redação e a identidade da Nuvessa são originais. Alegações terapêuticas, urgência artificial, estatísticas não comprovadas e selos de aprovação não foram reproduzidos.
 
 ## Publicação rápida
 
@@ -17,7 +17,7 @@ A página usa como referência de ritmo comercial a página pública do produto:
 3. No Cloudflare Pages, crie um projeto conectado a esse repositório e selecione a branch `main`.
 4. Framework: `None`. Comando de build: `npm run build`. Comando de deploy: `npx wrangler deploy`. Diretório raiz: deixe vazio (raiz do repositório). O arquivo `wrangler.jsonc` limita a publicação à pasta `dist/`.
 5. Publique e abra a URL `pages.dev` informada pelo Cloudflare. Atualizações enviadas à branch conectada geram novas publicações.
-6. Para usar `nuvessabemestar.com.br`, registre o domínio e adicione-o como domínio personalizado no projeto Pages, seguindo as instruções de DNS.
+6. O domínio configurado é `nuvessasaude.com.br`. Mantenha-o como domínio personalizado no projeto Cloudflare atual.
 
 O build usa Node.js e funciona no ambiente Linux do Cloudflare. O Wrangler é instalado pelas dependências do projeto. `build.ps1` é uma alternativa apenas para uso local no Windows.
 
@@ -25,7 +25,7 @@ O build usa Node.js e funciona no ambiente Linux do Cloudflare. O Wrangler é in
 
 Use `nervocuremax-cloudflare-publicar.zip`, que contém somente os arquivos públicos, com `index.html` na raiz. Envie esse ZIP na opção de upload de arquivos do Cloudflare Pages. Se a interface solicitar uma pasta, extraia o ZIP e selecione a pasta extraída. Não há comando de build nesse modo.
 
-O nome e o e-mail já estão preenchidos. O domínio configurado é `https://nuvessabemestar.com.br`. Se usar outro endereço definitivo, ajuste `BASE_URL` em `js/config.js` e as URLs em `index.html`, `robots.txt` e `sitemap.xml`.
+O nome e o e-mail já estão preenchidos. O domínio configurado é `https://nuvessasaude.com.br`. Se usar outro endereço definitivo, ajuste `BASE_URL` em `js/config.js` e as URLs em `index.html`, `robots.txt` e `sitemap.xml`.
 
 ### Publicação pelo terminal com Wrangler
 
@@ -52,7 +52,7 @@ Edite apenas `js/config.js` para alterar:
 - `BUSINESS_NAME`: nome da loja (`Nuvessa Saúde & Bem-Estar`);
 - `LEGAL_RESPONSIBLE`: NUVESSA BEM ESTAR LTDA;
 - `COMMERCIAL_EMAIL`: `nuvessabemestar@gmail.com`;
-- `BASE_URL`: preparado para `https://nuvessabemestar.com.br`;
+- `BASE_URL`: configurado para `https://nuvessasaude.com.br`;
 - `META_PIXEL_ID`: `1144579295213270`;
 - `GUARANTEE_DAYS`: configurado em `90`, conforme a página atual do produtor verificada em 29/10/2026;
 - `SHOW_SPECIAL_OFFERS`: altere para `true` somente após confirmar as condições das ofertas ocultas;
@@ -98,17 +98,16 @@ Identificação empresarial alterada para `NUVESSA BEM ESTAR LTDA` conforme info
 | Arquivo local | Uso | Origem |
 |---|---|---|
 | `assets/images/frasco-oficial-02.webp` | Hero e vitrine do kit de 1 caixa | Pasta pública “💊 FRASCOS PNG” no Drive principal fornecido pelo afiliado: `1gtRBG5jJjgROlyhknQoVGPDKDO4LZ3GR` |
-| `assets/images/kit-3-caixas-massageador.png` | Vitrine com 3 embalagens e massageador | Composição criada para o projeto com a ferramenta integrada de imagens, usando a embalagem oficial e a página do produtor como referências visuais |
-| `assets/images/kit-5-caixas-massageador.png` | Vitrine com 5 embalagens e massageador | Composição criada para o projeto com a ferramenta integrada de imagens, usando a embalagem oficial e a página do produtor como referências visuais |
-| `assets/images/kit-8-caixas-massageador.png` | Vitrine com 8 embalagens e massageador | Composição criada para o projeto com a ferramenta integrada de imagens, usando a embalagem oficial e a página do produtor como referências visuais |
-| `assets/images/kit-12-caixas-massageador.png` | Vitrine com 12 embalagens e massageador | Composição criada para o projeto com a ferramenta integrada de imagens, usando a embalagem oficial e a página do produtor como referências visuais |
+| `assets/images/kit-3-caixas-massageador.webp` | Vitrine com 3 embalagens e massageador | Versão WebP otimizada da composição original do projeto |
+| `assets/images/kit-5-caixas-massageador.webp` | Vitrine com 5 embalagens e massageador | Versão WebP otimizada da composição original do projeto |
+| `assets/images/kit-8-caixas-massageador.webp` | Vitrine com 8 embalagens e massageador | Versão WebP otimizada da composição original do projeto |
+| `assets/images/kit-12-caixas-massageador.webp` | Vitrine com 12 embalagens e massageador | Versão WebP otimizada da composição original do projeto |
 | `assets/icons/favicon.svg` | Símbolo abstrato neutro | Criado para este projeto; não representa certificação médica |
 
 Nenhuma imagem é carregada por hotlink. Este projeto de backup inclui os quatro vídeos integrais por solicitação do proprietário e deve permanecer como cópia local de arquivo; consulte o aviso no topo da página antes de qualquer uso público.
 
 ## Pendências antes da publicação definitiva
 
-- registrar e conectar `nuvessabemestar.com.br` à hospedagem;
 - realizar pesquisa formal de disponibilidade da marca Nuvessa no INPI antes do registro;
 - revisar juridicamente o rótulo atual antes de eventual inclusão de composição, quantidades, advertências e modo de uso;
 - fazer revisão jurídica final dos textos legais e das condições do produtor/Braip.

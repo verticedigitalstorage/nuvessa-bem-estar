@@ -3,6 +3,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
+    "test": "node tests/audit.mjs && npm run build && node tests/build-audit.mjs",
     "build": "node build.mjs",
     "deploy": "npm run build && wrangler deploy",
     "cf:login": "wrangler login",

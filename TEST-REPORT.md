@@ -1,57 +1,107 @@
-# Relatório final de testes
+# Relatório de otimização e testes — Nuvessa
 
-Data: 2 de novembro de 2026
+Data: 3 de novembro de 2026
 
-| Verificação | Resultado | Evidência |
-|---|---:|---|
-| Layout em 360 px | PASS | Sem rolagem horizontal; CTA e destaque legíveis |
-| Layout em 390 px | PASS | Sem rolagem horizontal; cards em coluna |
-| Layout em 768 px | PASS | Sem rolagem horizontal; hierarquia preservada |
-| Layout desktop em 1440 px | PASS | Hero em duas colunas e ofertas equilibradas |
-| Produto em destaque | PASS | Imagem oficial ocupa a maior área visual do hero no desktop e aparece primeiro no celular |
-| Ordem da jornada | PASS | Produto → depoimentos → kits → garantia → informações e dúvidas |
-| Identidade visual | PASS | Símbolo da marca no cabeçalho e nome Nuvessa Saúde & Bem-Estar em todas as páginas |
-| Bloco genérico removido | PASS | “Compra segura”, “Informação clara” e “Escolha simples” não aparecem mais na primeira dobra |
-| Kit de 5 caixas primeiro no celular | PASS | Ordem visual verificada em 360, 390 e 768 px |
-| Kit de 5 caixas com maior destaque | PASS | Borda, selo e elevação exclusivos |
-| Kits de 8 e 12 caixas acessíveis | PASS | Seção expansível testada no navegador |
-| Ofertas de 2, 4, 6 caixas e mensal ocultas | PASS | `SHOW_SPECIAL_OFFERS: false`; ativação por uma configuração |
-| Cinco links públicos corretos | PASS | Campanhas de 1, 3, 5, 8 e 12 caixas correspondem rigorosamente aos kits |
-| Links especiais documentados | PASS | Campanhas de 4 e 6 atualizadas; 2 caixas e mensal preservados por falta de campanha correspondente |
-| Redirecionamentos Braip | PASS | Sete campanhas retornaram HTTP 200 e chegaram ao `pl`, `ck` e `af=afidn9137l` esperados |
-| Propagação de UTMs e `fbclid` | PASS | Campanha de 5 caixas manteve os parâmetros até o checkout final |
-| Links renderizados no navegador | PASS | Os cinco botões públicos exibiram a campanha correta com UTMs e `fbclid`; 8 e 12 permaneceram na área expansível |
-| Proteção dos parâmetros essenciais | PASS | Campanhas não recebem parâmetros artificiais; links legados não aceitam sobrescrita de `pl`, `ck` ou `af` |
-| Garantia de 90 dias | PASS | Condição verificada na página atual do produtor; configuração, hero, selo, seção e FAQ coerentes |
-| Imagens nos cinco kits | PASS | Cada card representa visualmente 1, 3, 5, 8 ou 12 embalagens; os quatro kits com brinde exibem o massageador e usam carregamento tardio |
-| Condições promocionais | PASS | Preço anterior, 12 parcelas e valor à vista dos cinco kits conferidos na página de referência do produtor em 30/10/2026; checkout prevalece |
-| Depoimentos em vídeo | PASS | Quatro arquivos integrais do último Drive carregados pelo Cloudflare R2 |
-| Exibição dos depoimentos | PASS | Os quatro vídeos aparecem uma única vez; o antigo vídeo da caixa permanece removido |
-| Redesign inspirado na referência | PASS | Hero comercial, acentos laranja, produto ampliado e prova social priorizada, sem copiar alegações ou identidade de terceiros |
-| Navegação de conversão | PASS | Botão de kits no cabeçalho e barra fixa no celular levam diretamente às ofertas |
-| Identificação e contato | PASS | Responsável legal e e-mail comercial exibidos nas páginas públicas e documentos legais |
-| Domínio preparado | PASS | Canonical, configuração, Open Graph, sitemap e robots preparados para `nuvessabemestar.com.br` |
-| Busca por referências antigas e alegações indevidas | PASS | Nenhuma ocorrência encontrada no código publicável |
-| Consentimento de cookies | PASS | Aceitar, recusar e rever testados |
-| Meta Pixel e consentimento | PASS | ID 1144579295213270 configurado; biblioteca, inicialização e PageView únicos após consentimento |
-| Meta Pixel recusado | PASS | Em origem limpa, a recusa manteve zero scripts da Meta e zero erros no console |
-| Meta Pixel aceito | PASS | Em origem limpa, aceitar carregou a biblioteca/configuração oficial do ID e ocultou o banner sem erro de CSP |
-| CSP do Pixel | PASS | `script-src`, `connect-src` e `img-src` permitem somente os hosts necessários; sem `unsafe-inline` |
-| Evento Purchase | PASS | Nenhuma ocorrência ou disparo de `Purchase` no front-end |
-| Páginas legais | PASS | Privacidade, Termos e Aviso Legal retornaram HTTP 200 |
-| Página 404 | PASS | Rota inexistente retornou HTTP 404 com página própria |
-| Recursos internos | PASS | Imagem, CSS, JS, favicon e links internos encontrados |
-| Console do navegador | PASS | Zero erros e zero avisos durante a QA |
-| Auditoria equivalente a Lighthouse | PASS | HTML semântico, árvore acessível, foco, contraste, SEO, dimensões de imagem, preload, recursos locais, segurança e peso dos recursos revisados; CLI Lighthouse não estava disponível no ambiente |
-| Build estático | PASS | Conteúdo gerado em `dist/` e servido localmente |
+Base utilizada: branch `main`, commit `aee28331697532cabdad1a560724512ab78666d8`
 
-Auditoria automatizada: **72 PASS / 0 FAIL**.
+Produção alterada: **não**
 
-## Limitações documentadas
+Commit, push, merge ou deploy executado: **não**
 
-- A composição e o modo de uso foram omitidos nesta versão até revisão regulatória do rótulo atual.
-- Prazo de entrega absoluto não foi publicado.
-- O domínio está preparado no código, mas ainda precisa ser registrado e conectado. O Meta Pixel usa arquivo externo e permanece bloqueado até consentimento.
-- Esta atualização do Pixel foi preparada e testada localmente, mas não foi enviada ao GitHub nem publicada na Cloudflare, conforme solicitado. Os vídeos integrais permanecem no R2 e não são incluídos no pacote GitHub.
-- O navegador local confirmou o carregamento da biblioteca oficial e da configuração do ID sem erro de CSP. A confirmação final no Gerenciador de Eventos/Meta Pixel Helper depende da publicação manual no domínio real e do consentimento do visitante.
-- Os redirecionamentos exibiram `afidn9137l`, mas o crédito de comissão e os eventos de conversão da Braip não podem ser comprovados sem teste real nos respectivos painéis.
+## Melhorias realizadas
+
+- Primeira tela reescrita para apresentar claramente o NervoCure Max, os kits e o acesso à compra pela Braip.
+- CTA principal alterado para **Ver kits e preços**.
+- Kits de 1, 3 e 5 caixas movidos para logo após a apresentação inicial.
+- Kits de 8 e 12 caixas mantidos em seção expansível.
+- Destaque do kit de 5 caixas preservado sem a alegação não verificada “Mais escolhido”.
+- Quatro depoimentos preservados e movidos para depois das ofertas.
+- Todos os depoimentos receberam miniatura própria e `preload="none"`.
+- No celular, os depoimentos agora usam rolagem horizontal para reduzir a extensão da página.
+- Aviso de cookies reduzido, mantendo aceitar, recusar e rever a decisão.
+- Meta Pixel e UTMify continuam condicionados ao consentimento.
+- Links Braip, valores, quantidades, brindes, UTMs e `fbclid` foram preservados.
+- Domínio de SEO corrigido para `https://nuvessasaude.com.br` em canonical, Open Graph, sitemap e robots.
+- Imagens dos kits convertidas para WebP; os PNGs originais permanecem no código-fonte como backup.
+- Build público passou a excluir backups e recursos não utilizados.
+
+## Comparação da experiência
+
+| Área | Versão anterior | Versão otimizada |
+|---|---|---|
+| Primeira tela | Texto genérico e CTA principal para depoimentos | Produto nomeado, informações comerciais e CTA direto para kits |
+| Ordem da página | Depoimentos antes das ofertas | Kits antes dos depoimentos |
+| Kits no celular | Kit destacado podia mudar de posição | Ordem clara: 1, 3 e 5 caixas |
+| Depoimentos | Grade longa antes da compra | Grade após ofertas e carrossel horizontal no celular |
+| Vídeos | Parte deles podia carregar metadados sem interação | Todos usam miniaturas e `preload="none"` |
+| Cookies | Painel mais largo e botões empilhados no celular | Painel compacto com duas escolhas lado a lado |
+| SEO | Referências residuais ao domínio antigo | Domínio real aplicado de forma consistente |
+
+## Resultados automatizados
+
+Comando executado:
+
+```bash
+npm test
+```
+
+Resultados:
+
+- Auditoria funcional e de segurança: **88 PASS / 0 FAIL**.
+- Auditoria do build: **31 PASS / 0 FAIL**.
+- Build da Cloudflare: **concluído**.
+- Tamanho do diretório público: **2,43 MB**.
+- Recursos principais servidos localmente: **HTTP 200**.
+- Sintaxe dos arquivos JavaScript: **válida**.
+- `git diff --check`: **sem erros**.
+
+Cobertura dos testes:
+
+- cinco kits e links correspondentes;
+- valores, parcelamento, quantidades e brindes preservados;
+- UTMs e `fbclid` propagados aos botões;
+- parâmetros `pl`, `ck` e `af` protegidos nos links legados;
+- Pixel `1144579295213270` único;
+- `PageView` único após consentimento;
+- nenhum evento `Purchase` criado;
+- Pixel e UTMify ausentes antes do consentimento;
+- aceitar, recusar e rever cookies;
+- CSP sem `unsafe-inline` e com permissões da Meta e UTMify;
+- ausência aparente de tokens privados no frontend;
+- miniaturas e recursos internos presentes;
+- vídeos integrais mantidos no R2 e não duplicados no build;
+- imagens WebP presentes e abaixo de 250 KB.
+
+## Desempenho
+
+- Conjunto das quatro imagens de kits usado na página: **7,08 MB → 0,42 MB**.
+- Redução aproximada desse conjunto: **94,1%**.
+- Os vídeos de depoimento continuam no Cloudflare R2 e só são solicitados após interação.
+- O vídeo demonstrativo local permanece com `preload="none"`.
+
+## Validações que dependem da produção
+
+- Recebimento real de eventos nos painéis da Meta, UTMify e Braip.
+- Evento `InitiateCheckout` enviado pela Braip após o redirecionamento.
+- Reprodução dos vídeos pelo domínio público do R2 na rede do visitante.
+- Aplicação efetiva dos cabeçalhos `_headers` pela Cloudflare.
+- Preços, formas de pagamento, garantia e prazos exibidos pelo checkout no dia da compra.
+- Comparação visual por captura real de navegador. O navegador de QA disponível não conseguiu acessar o domínio publicado e a instalação local de Chromium foi bloqueada; por isso a comparação visual foi feita pela estrutura HTML/CSS e pelos testes de responsividade, sem capturas.
+
+## Publicação manual
+
+1. Faça um backup da versão atual do repositório.
+2. Extraia o ZIP em uma pasta vazia.
+3. Copie todo o conteúdo extraído para a raiz do repositório local, substituindo os arquivos existentes.
+4. Não copie uma pasta externa adicional: `index.html`, `package.json`, `wrangler.jsonc`, `_headers`, `assets`, `css` e `js` devem ficar na raiz.
+5. Revise as alterações no GitHub Desktop ou VS Code.
+6. Faça commit e push para a branch `main` somente quando decidir publicar.
+7. Aguarde o deploy da Cloudflare concluir com sucesso.
+8. Em aba anônima, teste recusa e aceite de cookies, os cinco kits, os vídeos e uma URL com UTMs.
+9. Confira Meta Events Manager, UTMify e Braip após o deploy.
+
+## Pendências de conteúdo
+
+- Composição, quantidades, modo de uso e regularidade regulatória continuam sem alegações porque não foram formalmente verificadas.
+- O cadastro empresarial informado não foi validado e nenhum CNPJ foi inventado.
+- Os depoimentos são materiais do produtor e continuam recomendados para revisão jurídica.
