@@ -74,6 +74,16 @@ h1, h2, h3, p { text-wrap: pretty; }
 .trust-ribbon div:last-child { border-right: 0; }
 .trust-ribbon strong { color: var(--green-950); font-size: 1rem; line-height: 1.25; }
 .trust-ribbon span { color: var(--muted); font-size: .75rem; }
+.needs-section { padding-top: 3.2rem; }
+.needs-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1rem; }
+.needs-grid > div { padding: 1.35rem; border: 1px solid var(--line); border-radius: 20px; background: var(--green-50); }
+.needs-grid span { display: block; margin-bottom: .8rem; color: var(--orange-dark); font-size: .76rem; font-weight: 900; letter-spacing: .12em; }
+.needs-grid strong { color: var(--green-950); font-size: 1.08rem; }
+.needs-grid p { margin: .45rem 0 0; color: var(--muted); font-size: .9rem; }
+.needs-cta { margin-top: 1.5rem; }
+.product-info--early { margin-top: 0; padding-top: 2rem; }
+.journey-cta { max-width: 1120px; margin: 0 auto 1rem; padding: 1.15rem 1.4rem; display: flex; align-items: center; justify-content: space-between; gap: 1rem; border: 1px solid var(--line); border-radius: 18px; background: #fff; }
+.journey-cta p { margin: 0; color: var(--green-950); font-weight: 800; }
 
 .section { max-width: 1120px; margin: 0 auto; padding: 5rem 1.25rem; }
 .section h2, .notice h2, .final-cta h2 { margin: .15rem 0 1.1rem; font-size: clamp(2rem, 4vw, 3.4rem); line-height: 1.07; letter-spacing: -.04em; }
@@ -214,6 +224,8 @@ footer { padding: 4rem 1.25rem 2rem; background: #072e23; color: #dcebe4; }
   .trust-ribbon div:nth-child(2) { border-right: 0; }
   .trust-ribbon div:nth-child(-n+2) { padding-bottom: .8rem; border-bottom: 1px solid var(--line); }
   .trust-ribbon div:nth-child(n+3) { padding-top: .8rem; }
+  .needs-grid { grid-template-columns: 1fr; }
+  .journey-cta { margin-inline: 1rem; flex-direction: column; align-items: stretch; text-align: center; }
   .stories-grid { grid-template-columns: 1fr 1fr; }
   .proof-intro { grid-template-columns: 1fr; gap: .8rem; }
   .story-card--featured video { height: 320px; }
@@ -246,6 +258,8 @@ footer { padding: 4rem 1.25rem 2rem; background: #072e23; color: #dcebe4; }
   .trust-ribbon div { padding-inline: .35rem; }
   .trust-ribbon strong { font-size: .86rem; }
   .trust-ribbon span { font-size: .65rem; }
+  .needs-section { padding-top: 2.5rem; }
+  .needs-grid > div { padding: 1.1rem; }
   .section { padding-block: 3.7rem; }
   .proof-section--priority { margin-inline: .65rem; padding: 3.2rem 1rem; border-radius: 28px; }
   .stories-grid { margin-inline: -1rem; padding: 0 1rem .6rem; display: flex; gap: .85rem; overflow-x: auto; scroll-snap-type: x mandatory; scrollbar-width: thin; }
