@@ -69,5 +69,11 @@
     return true;
   }
 
-  window.NUVESSA_META_PIXEL = Object.freeze({ load, trackCustom, hasConsent });
+  function track(name, detail = {}) {
+    if (!load()) return false;
+    window.fbq("track", name, detail);
+    return true;
+  }
+
+  window.NUVESSA_META_PIXEL = Object.freeze({ load, track, trackCustom, hasConsent });
 })();

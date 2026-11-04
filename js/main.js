@@ -90,9 +90,6 @@
 
       ${offer.installmentPrice ? `
         <div class="offer-pricing">
-          <p class="offer-original">
-            De <s>${offer.originalPrice}</s> por
-          </p>
           <p class="offer-installment">
             <span>${offer.installments}x de</span>
             <strong>${offer.installmentPrice}</strong>
@@ -100,6 +97,8 @@
           <p class="offer-cash">
             ou <strong>${offer.price}</strong> à vista
           </p>
+          <p class="offer-unit">${(Number(offer.price.replace(/[^0-9,]/g, "").replace(",", ".")) / offer.boxes).toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} por caixa, no pagamento à vista</p>
+          <p class="offer-terms">Confira no checkout as condições do parcelamento, frete e disponibilidade.</p>
         </div>`
         : `<p class="offer-price">${offer.price}</p>`}
 
@@ -137,6 +136,18 @@
           .append(offerCard(offer, true));
       });
     }
+
+    document.querySelectorAll("[data-direct-checkout]")
+      .forEach((link) => {
+        const offer = cfg.OFFERS.find(
+          (item) => item.id === link.dataset.directCheckout
+        );
+
+        if (offer) {
+          link.href = trackedCheckout(offer.url);
+          link.rel = "sponsored noopener";
+        }
+      });
   }
 
   // Controle de consentimento
@@ -263,6 +274,15 @@
         recordEvent("select_offer", {
           offer_id: offer.dataset.offer
         });
+        if (window.NUVESSA_META_PIXEL) {
+          window.NUVESSA_META_PIXEL.track("InitiateCheckout", {
+            content_name: cfg.PRODUCT_NAME,
+            content_category: "Suplemento alimentar",
+            content_ids: [offer.dataset.offer],
+            content_type: "product",
+            currency: "BRL"
+          });
+        }
       }
 
       if (offersAnchor) {
