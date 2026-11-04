@@ -274,15 +274,6 @@
         recordEvent("select_offer", {
           offer_id: offer.dataset.offer
         });
-        if (window.NUVESSA_META_PIXEL) {
-          window.NUVESSA_META_PIXEL.track("InitiateCheckout", {
-            content_name: cfg.PRODUCT_NAME,
-            content_category: "Suplemento alimentar",
-            content_ids: [offer.dataset.offer],
-            content_type: "product",
-            currency: "BRL"
-          });
-        }
       }
 
       if (offersAnchor) {
