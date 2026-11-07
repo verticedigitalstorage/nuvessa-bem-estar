@@ -19,7 +19,7 @@
   <script src="js/meta-pixel.js" defer></script>
   <script src="js/main.js" defer></script>
 </head>
-<body>
+<body class="landing-page">
   <a class="skip-link" href="#conteudo">Pular para o conteúdo</a>
   <div class="topbar">NervoCure Max • Garantia informada de <span data-guarantee>90</span> dias</div>
   <header class="site-header">
@@ -43,9 +43,31 @@
       </figure>
       <div class="hero-details">
         <ul class="hero-points" aria-label="Informações para conhecer o produto"><li>Consulte a apresentação e as informações disponíveis</li><li>Compare quantidades, brindes e valores</li><li>Confira as condições vigentes antes de concluir a compra</li></ul>
-        <div class="hero-actions"><a class="button button--hero" href="#produto">Conhecer o produto</a><a class="hero-link" href="#ofertas">Ver os kits disponíveis →</a></div>
+        <div class="hero-actions"><a class="button button--hero" href="#ofertas">Ver os kits disponíveis →</a><a class="hero-link" href="#produto">Conhecer o produto</a></div>
         <p class="microcopy">NervoCure Max é apresentado como suplemento alimentar. Consulte o rótulo da embalagem recebida.</p>
       </div>
+    </section>
+
+    <section class="section proof-section proof-section--priority" id="experiencias" aria-labelledby="experiencias-titulo">
+      <div class="proof-intro">
+        <div><p class="eyebrow">Experiências compartilhadas</p><h2 id="experiencias-titulo">Quatro depoimentos em vídeo</h2></div>
+      </div>
+      <div class="story-controls" aria-label="Navegação dos depoimentos"><button type="button" id="story-prev" aria-label="Depoimento anterior">←</button><button type="button" id="story-next" aria-label="Próximo depoimento">→</button></div>
+      <div class="stories-grid" aria-label="Experiências em vídeo">
+        <figure class="story-card"><div class="story-media"><video controls playsinline preload="none" poster="assets/videos/depoimento-completo-1.jpg" width="720" height="405" aria-label="Experiência pessoal com o NervoCure Max"><source src="https://pub-b31aff6972c544e58790c398b98875c5.r2.dev/depoimento-completo-1.mp4" type="video/mp4">Seu navegador não suporta este vídeo. <a href="https://pub-b31aff6972c544e58790c398b98875c5.r2.dev/depoimento-completo-1.mp4">Abrir esta experiência</a>.</video><button class="story-play" type="button" aria-label="Reproduzir depoimento 1">▶</button></div><figcaption><span class="story-label">Experiência pessoal</span><h3>Minha experiência com o NervoCure Max</h3><p>Relato individual disponibilizado pelo produtor.</p></figcaption></figure>
+        <figure class="story-card"><div class="story-media"><video controls playsinline preload="none" poster="assets/videos/depoimento-completo-2.jpg" width="720" height="405" aria-label="Percepções pessoais ao longo do uso"><source src="https://pub-b31aff6972c544e58790c398b98875c5.r2.dev/depoimento-completo-2.mp4" type="video/mp4">Seu navegador não suporta este vídeo. <a href="https://pub-b31aff6972c544e58790c398b98875c5.r2.dev/depoimento-completo-2.mp4">Abrir esta experiência</a>.</video><button class="story-play" type="button" aria-label="Reproduzir depoimento 2">▶</button></div><figcaption><span class="story-label">Percepções pessoais</span><h3>O que percebi ao longo do uso</h3><p>Relato individual disponibilizado pelo produtor.</p></figcaption></figure>
+        <figure class="story-card"><div class="story-media"><video controls playsinline preload="none" poster="assets/videos/depoimento-completo-3.jpg" width="720" height="405" aria-label="Relato pessoal sobre rotina e bem-estar"><source src="https://pub-b31aff6972c544e58790c398b98875c5.r2.dev/depoimento-completo-3.mp4" type="video/mp4">Seu navegador não suporta este vídeo. <a href="https://pub-b31aff6972c544e58790c398b98875c5.r2.dev/depoimento-completo-3.mp4">Abrir esta história</a>.</video><button class="story-play" type="button" aria-label="Reproduzir depoimento 3">▶</button></div><figcaption><span class="story-label">Rotina e bem-estar</span><h3>Uma história sobre a rotina</h3><p>Relato individual disponibilizado pelo produtor.</p></figcaption></figure>
+        <figure class="story-card"><div class="story-media"><video controls playsinline preload="none" poster="assets/videos/depoimento-completo-4.jpg" width="720" height="405" aria-label="Experiência pessoal e agradecimento à equipe"><source src="https://pub-b31aff6972c544e58790c398b98875c5.r2.dev/depoimento-completo-4.mp4" type="video/mp4">Seu navegador não suporta este vídeo. <a href="https://pub-b31aff6972c544e58790c398b98875c5.r2.dev/depoimento-completo-4.mp4">Abrir esta mensagem</a>.</video><button class="story-play" type="button" aria-label="Reproduzir depoimento 4">▶</button></div><figcaption><span class="story-label">Mensagem à equipe</span><h3>Minha experiência e agradecimento</h3><p>Relato individual disponibilizado pelo produtor.</p></figcaption></figure>
+      </div>
+      <div class="proof-next"><span>Quer comparar novamente?</span><a class="button" href="#ofertas">Voltar aos kits</a></div>
+    </section>
+
+    <section class="section offers-section" id="ofertas">
+      <div class="section-heading"><p class="eyebrow">Kits e preços</p><h2>Compare o valor total e por caixa</h2><p>Veja a quantidade, os brindes informados e o preço de cada opção. O preço por caixa é uma divisão simples do valor à vista pelo número de caixas; confirme as condições finais no checkout. O kit de 5 caixas recebe destaque visual; isso não representa alegação de popularidade.</p></div>
+      <div class="offers-grid" id="main-offers" aria-live="polite"></div>
+      <div class="offers-grid offers-grid--two" id="extended-offers"></div>
+      <p class="offer-comparison-note">Comparação das caixas pelo valor unitário à vista de R$ 177,00, sem atribuir valor ao massageador. Frete e parcelamento não estão incluídos. Aplicável à mesma apresentação do produto e condições equivalentes no checkout.</p>
+      <section id="special-offers-section" hidden aria-label="Ofertas especiais"><h3>Ofertas especiais</h3><div class="offers-grid" id="special-offers"></div></section>
     </section>
 
     <section class="trust-ribbon" aria-label="O que você encontrará nesta página">
@@ -66,31 +88,6 @@
       <div class="prose"><p>NervoCure Max é apresentado como suplemento alimentar. Esta página apresenta Nervocuremax como tratamento para ou prevenir doenças.</p><p>Composições: Vitaminas e Multivitaminicos, Minerais, Aminoacidos. Produto livre de glúten, sem lactose e indicados para maiores de 18 anos.</p><ul class="check-list"><li>Livre de glúten.</li><li>0% Lactose.</li><li>Indicado para maiores de 18 anos.</li></ul></div>
     </section>
     <div class="journey-cta"><p>Quer comparar as opções disponíveis?</p><a class="button" href="#ofertas">Ver kits e preços</a></div>
-
-    <section class="section offers-section" id="ofertas">
-      <div class="section-heading"><p class="eyebrow">Kits e preços</p><h2>Compare o valor total e por caixa</h2><p>Veja a quantidade, os brindes informados e o preço de cada opção. O preço por caixa é uma divisão simples do valor à vista pelo número de caixas; confirme as condições finais no checkout. O kit de 5 caixas recebe destaque visual; isso não representa alegação de popularidade.</p></div>
-      <div class="offer-guide" aria-label="Como comparar os kits"><span><strong>1 caixa</strong> opção de entrada</span><span><strong>3 caixas</strong> opção econômica</span><span><strong>5 caixas</strong> kit em destaque</span></div>
-      <div class="offers-grid" id="main-offers" aria-live="polite"></div>
-      <details class="long-options">
-        <summary><span><strong>Opções para quantidades maiores</strong><small>Ver kits de 8 e 12 caixas</small></span><span class="summary-icon" aria-hidden="true">+</span></summary>
-        <div class="offers-grid offers-grid--two" id="extended-offers"></div>
-      </details>
-      <section id="special-offers-section" hidden aria-label="Ofertas especiais"><h3>Ofertas especiais</h3><div class="offers-grid" id="special-offers"></div></section>
-    </section>
-
-    <section class="section proof-section proof-section--priority" id="experiencias" aria-labelledby="experiencias-titulo">
-      <div class="proof-intro">
-        <div><p class="eyebrow">Experiências compartilhadas</p><h2 id="experiencias-titulo">Quatro depoimentos em vídeo</h2></div>
-        <p>Os vídeos originais foram preservados. Eles só começam a carregar quando você interage com o reprodutor.</p>
-      </div>
-      <div class="stories-grid" aria-label="Experiências em vídeo">
-        <figure class="story-card"><video controls playsinline preload="none" poster="assets/videos/depoimento-completo-1.jpg" width="720" height="405" aria-label="Experiência pessoal com o NervoCure Max"><source src="https://pub-b31aff6972c544e58790c398b98875c5.r2.dev/depoimento-completo-1.mp4" type="video/mp4">Seu navegador não suporta este vídeo. <a href="https://pub-b31aff6972c544e58790c398b98875c5.r2.dev/depoimento-completo-1.mp4">Abrir esta experiência</a>.</video><figcaption><span class="story-label">Experiência pessoal</span><h3>Minha experiência com o NervoCure Max</h3><p>Relato individual disponibilizado pelo produtor.</p></figcaption></figure>
-        <figure class="story-card"><video controls playsinline preload="none" poster="assets/videos/depoimento-completo-2.jpg" width="720" height="405" aria-label="Percepções pessoais ao longo do uso"><source src="https://pub-b31aff6972c544e58790c398b98875c5.r2.dev/depoimento-completo-2.mp4" type="video/mp4">Seu navegador não suporta este vídeo. <a href="https://pub-b31aff6972c544e58790c398b98875c5.r2.dev/depoimento-completo-2.mp4">Abrir esta experiência</a>.</video><figcaption><span class="story-label">Percepções pessoais</span><h3>O que percebi ao longo do uso</h3><p>Relato individual disponibilizado pelo produtor.</p></figcaption></figure>
-        <figure class="story-card"><video controls playsinline preload="none" poster="assets/videos/depoimento-completo-3.jpg" width="720" height="405" aria-label="Relato pessoal sobre rotina e bem-estar"><source src="https://pub-b31aff6972c544e58790c398b98875c5.r2.dev/depoimento-completo-3.mp4" type="video/mp4">Seu navegador não suporta este vídeo. <a href="https://pub-b31aff6972c544e58790c398b98875c5.r2.dev/depoimento-completo-3.mp4">Abrir esta história</a>.</video><figcaption><span class="story-label">Rotina e bem-estar</span><h3>Uma história sobre a rotina</h3><p>Relato individual disponibilizado pelo produtor.</p></figcaption></figure>
-        <figure class="story-card"><video controls playsinline preload="none" poster="assets/videos/depoimento-completo-4.jpg" width="720" height="405" aria-label="Experiência pessoal e agradecimento à equipe"><source src="https://pub-b31aff6972c544e58790c398b98875c5.r2.dev/depoimento-completo-4.mp4" type="video/mp4">Seu navegador não suporta este vídeo. <a href="https://pub-b31aff6972c544e58790c398b98875c5.r2.dev/depoimento-completo-4.mp4">Abrir esta mensagem</a>.</video><figcaption><span class="story-label">Mensagem à equipe</span><h3>Minha experiência e agradecimento</h3><p>Relato individual disponibilizado pelo produtor.</p></figcaption></figure>
-      </div>
-      <div class="proof-next"><span>Quer comparar novamente?</span><a class="button" href="#ofertas">Voltar aos kits</a></div>
-    </section>
 
     <section class="section guarantee">
       <div class="guarantee-seal" role="img" aria-label="Garantia de 90 dias"><span class="seal-stars" aria-hidden="true">★ ★ ★</span><span class="seal-label">Garantia</span><strong>90</strong><span class="seal-days">dias</span></div>

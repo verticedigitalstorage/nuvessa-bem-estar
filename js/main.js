@@ -57,9 +57,17 @@
       offer.imageClass || "offer-image--product";
 
     const imageSize = image.includes("frasco-oficial") ? 768 : 900;
+    const cash = Number(offer.price.replace(/[^0-9,]/g, "").replace(",", "."));
+    const unit = cash / offer.boxes;
+    const formatMoney = (value) =>
+      value.toLocaleString("pt-BR", { style: "currency", currency: "BRL" });
+    const reference = offer.boxes * 177;
+    const savings = reference - cash;
+    const savingsPercent = (100 * savings / reference)
+      .toLocaleString("pt-BR", { minimumFractionDigits: 1, maximumFractionDigits: 1 });
 
     article.innerHTML = `
-      ${offer.featured ? '<p class="offer-badge">Kit em destaque</p>' : ""}
+      <p class="offer-badge">${special ? "Oferta especial" : offer.label}</p>
       <div class="offer-visual">
         <img class="offer-image ${imageClass}"
           src="${image}"
@@ -90,14 +98,16 @@
 
       ${offer.installmentPrice ? `
         <div class="offer-pricing">
-          <p class="offer-installment">
-            <span>${offer.installments}x de</span>
-            <strong>${offer.installmentPrice}</strong>
-          </p>
-          <p class="offer-cash">
-            ou <strong>${offer.price}</strong> à vista
-          </p>
-          <p class="offer-unit">${(Number(offer.price.replace(/[^0-9,]/g, "").replace(",", ".")) / offer.boxes).toLocaleString("pt-BR", { style: "currency", currency: "BRL" })} por caixa, no pagamento à vista</p>
+          <p class="offer-cash-label">Preço à vista do kit</p>
+          <p class="offer-cash"><strong>${offer.price}</strong></p>
+          <p class="offer-unit">${formatMoney(unit)} por caixa</p>
+          ${!special && offer.boxes > 1 ? `
+            <div class="offer-savings">
+              <span>${offer.boxes} caixas avulsas: ${formatMoney(reference)}</span>
+              <strong>Economize ${formatMoney(savings)}</strong>
+              <b>${savingsPercent}% de economia</b>
+            </div>` : ""}
+          <p class="offer-installment">${offer.installments}x de ${offer.installmentPrice}</p>
           <p class="offer-terms">Confira no checkout as condições do parcelamento, frete e disponibilidade.</p>
         </div>`
         : `<p class="offer-price">${offer.price}</p>`}
@@ -283,6 +293,35 @@
 
     document.querySelector("#year").textContent =
       new Date().getFullYear();
+
+    document.querySelectorAll(".story-play").forEach((button) => {
+      const video = button.parentElement.querySelector("video");
+      button.addEventListener("click", () => {
+        video.play().catch(() => video.focus());
+      });
+      video.addEventListener("play", () => { button.hidden = true; });
+      video.addEventListener("ended", () => { button.hidden = false; });
+    });
+
+    const stories = document.querySelector(".stories-grid");
+    ["prev", "next"].forEach((direction) => {
+      document.querySelector(`#story-${direction}`)
+        ?.addEventListener("click", () => {
+          const card = stories.querySelector(".story-card");
+          stories.scrollBy({
+            left: (direction === "next" ? 1 : -1) *
+              (card.getBoundingClientRect().width + 16),
+            behavior: "smooth"
+          });
+        });
+    });
+
+    if ("IntersectionObserver" in window) {
+      const offerBar = document.querySelector(".mobile-offer-bar");
+      new IntersectionObserver(([entry]) => {
+        offerBar.classList.toggle("is-over-offers", entry.isIntersecting);
+      }).observe(document.querySelector("#ofertas"));
+    }
   }
 
   renderOffers();
